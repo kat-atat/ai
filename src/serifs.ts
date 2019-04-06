@@ -12,7 +12,7 @@ export default {
 
 		helloNight: name => name ? `こんばんは、${name}♪` : `こんばんは♪`,
 
-		goodMorning: (tension, name) => name ? `おはようございます、${name}！${tension}` : `おはようございます！${tension}`,
+		goodMorning: (tension, name) => name ? `おはよう、${name}！${tension}` : `おはよう！${tension}`,
 
 		/*
 		goodMorning: {
@@ -22,9 +22,9 @@ export default {
 		},
 */
 
-		goodNight: name => name ? `おやすみなさい、${name}！` : 'おやすみなさい！',
+		goodNight: name => name ? `おやすみ、${name}！` : 'おやすみ～！',
 
-		omedeto: name => name ? `ありがとうございます、${name}♪` : 'ありがとうございます♪',
+		omedeto: name => name ? `ありがとう、${name}♪` : 'ありがとう♪',
 
 		okaeri: {
 			love: name => name ? [
@@ -32,7 +32,7 @@ export default {
 				`おかえりなさい、${name}っ！`
 			] : [
 				'おかえりなさい♪',
-				'おかえりご主人っ。'
+				'おかえりっ！'
 			],
 
 			love2: name => name ? `おかえりなさい♡♡♡${name}っっ♡♡♡♡♡` : 'おかえりなさい♡♡♡',
@@ -50,7 +50,7 @@ export default {
 
 		invalidName: '発音が難しい気がするなぁ',
 
-		requireMoreLove: 'もっと仲良くなったら考えてあげてもいいですよ？',
+		requireMoreLove: 'もっと仲良くなったら考えてあげてもいいよ？',
 
 		nadenade: {
 			normal: 'ひゃっ…！ びっくりしたぁ～',
@@ -108,7 +108,7 @@ export default {
 			hate: '…頭大丈夫？'
 		},
 
-		itai: name => name ? `${name}、大丈夫ですか…？ いたいのいたいの飛んでけっ！` : '大丈夫ですか…？ いたいのいたいの飛んでけっ！',
+		itai: name => name ? `${name}、大丈夫…？ いたいのいたいの飛んでけ～！` : '大丈夫…？ いたいのいたいの飛んでけ～っ！',
 
 		ote: {
 			normal: 'くぅん... 私わんちゃんじゃないよ...？',
@@ -132,7 +132,7 @@ export default {
 	},
 
 	birthday: {
-		happyBirthday: name => name ? `お誕生日おめでとうございます、${name}🎉` : 'お誕生日おめでとうございます🎉',
+		happyBirthday: name => name ? `お誕生日おめでとう！、${name}🎉` : 'お誕生日おめでとう～🎉',
 	},
 
 	/**
@@ -271,7 +271,7 @@ export default {
 
 		finishWithNoWinner: '今回は勝者はいなかったよ... またやろうね♪',
 
-		onagare: '参加者が集まらなかったのでお流れになっちゃった...'
+		onagare: '参加者が集まらなかったからお流れになっちゃった...'
 	},
 
 	/**
