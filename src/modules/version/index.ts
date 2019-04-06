@@ -46,7 +46,7 @@ export default class extends Module {
 
 					console.log(`Version changed: ${v}`);
 
-					this.ai.post({ text: `【バージョンが変わりました】\n${v}` });
+					this.ai.post({ text: `【バージョンが変わったよ！】\n${v}` });
 				} else {
 					// 変更なし
 				}
@@ -65,7 +65,7 @@ export default class extends Module {
 		if (query == null) return false;
 
 		this.ai.api('meta').then(meta => {
-			msg.reply(`${this.mfmVersion(meta.version)} みたいです。`)
+			msg.reply(`今のバージョンは${this.mfmVersion(meta.version)} だって！`)
 		}).catch(() => {
 			msg.reply(`取得失敗しました`)
 		});
