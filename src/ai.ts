@@ -306,7 +306,10 @@ export default class 藍 {
 	 */
 	@autobind
 	public api(endpoint: string, param?: any) {
-		return request.post(`${config.apiUrl}/${endpoint}`, {
+		return request.post({
+			url: `${config.apiUrl}/${endpoint}`,
+			forever: true,
+			timeout: 30 * 1000,
 			json: Object.assign({
 				i: config.i
 			}, param)

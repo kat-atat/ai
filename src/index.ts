@@ -40,7 +40,10 @@ promiseRetry(retry => {
 	log(`Account fetching... ${chalk.gray(config.host)}`);
 
 	// アカウントをフェッチ
-	return request.post(`${config.apiUrl}/i`, {
+	return request.post({
+		url: `${config.apiUrl}/i`, 
+		forever: true,
+		timeout: 30 * 1000,
 		json: {
 			i: config.i
 		}

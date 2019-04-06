@@ -506,7 +506,10 @@ class Session {
 			}
 
 			try {
-				const res = await request.post(`${config.host}/api/notes/create`, {
+				const res = await request.post({
+					url: `${config.host}/api/notes/create`,
+					forever: true,
+					timeout: 30 * 1000,
 					json: body
 				});
 
