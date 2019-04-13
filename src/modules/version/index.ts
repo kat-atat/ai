@@ -67,7 +67,7 @@ export default class extends Module {
 		this.ai.api('meta').then(meta => {
 			msg.reply(`今のバージョンは${this.mfmVersion(meta.version)} だって！`)
 		}).catch(() => {
-			msg.reply(`取得失敗しました`)
+			msg.reply(`取得失敗しちゃった...。`)
 		});
 
 		return true;

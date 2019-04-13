@@ -28,22 +28,22 @@ export default {
 
 		okaeri: {
 			love: name => name ? [
-				`おかえりなさい、${name}♪`,
-				`おかえりなさい、${name}っ！`
+				`おかえりなさ～い、${name}♪`,
+				`おかえりなさいっ、${name}っ。`
 			] : [
-				'おかえりなさい♪',
-				'おかえりっ！'
+				'おかえりなさ～い♪',
+				'おかえりなさいっ、ご主人様っ。'
 			],
 
-			love2: name => name ? `おかえりなさい♡♡♡${name}っっ♡♡♡♡♡` : 'おかえりなさい♡♡♡',
+			love2: name => name ? `おかえりなさい♡♡♡${name}っっ♡♡♡♡♡` : 'おかえりなさい♡♡♡ご主人様っっ♡♡♡♡♡',
 
-			normal: name => name ? `おかえり、${name}！` : 'おかえりなさい！',
+			normal: name => name ? `おかえりなさい、${name}！` : 'おかえりなさい！',
 		},
 
 		itterassyai: {
-			love: name => name ? `いってら、${name}♪` : 'いってら！',
+			love: name => name ? `いってらっしゃ～い、${name}♪` : 'いってらっしゃ～い♪',
 
-			normal: name => name ? `いってらっしゃい、${name}！` : 'いってらっしゃい♪',
+			normal: name => name ? `いってらっしゃい、${name}！` : 'いってらっしゃい！',
 		},
 
 		tooLong: '長すぎる気がするよ...',
@@ -69,9 +69,9 @@ export default {
 		},
 
 		kawaii: {
-			normal: ['ありがとう♪', '照れちゃうなぁ...'],
+			normal: ['ありがとう♪', '照れちゃう...'],
 
-			love: ['嬉しいな♪', '照れちゃうなぁ...'],
+			love: ['嬉しいな♪', '照れちゃうよぉ...'],
 
 			hate: '…ありがとう'
 		},
@@ -79,7 +79,7 @@ export default {
 		suki: {
 			normal: 'えっ… ありがとう…♪',
 
-			love: name => `私もその… ${name}のこと好きだよっ！`,
+			love: name => `私も… ${name}のこと好きだよ！`,
 
 			hate: null
 		},
@@ -122,13 +122,13 @@ export default {
 	},
 
 	keyword: {
-		learned: (word, reading) => `(${word}..... ${reading}..... 覚えた！)`,
+		learned: (word, reading) => `(${word}..... ${reading}..... 覚えたっ！)`,
 
 		remembered: (word) => `${word}`
 	},
 
 	dice: {
-		done: res => `${res} です！`
+		done: res => `${res} だよっ！`
 	},
 
 	birthday: {
@@ -252,7 +252,7 @@ export default {
 		/**
 		 * 正解したとき
 		 */
-		congrats: tries => `正解🎉 (${tries}回目で当てたよ)`,
+		congrats: tries => `正解🎉 (${tries}回目で当てたよ～)`,
 	},
 
 	/**
@@ -263,11 +263,11 @@ export default {
 
 		matakondo: 'また今度やろっ！',
 
-		intro: 'みんな～！数取りゲームしよう！\n0~100の中で最も大きい数字を取った人が勝ちだよ！他の人と被ったらだめだよ～！\n制限時間は5分！数字はこの投稿にリプライで送ってね！',
+		intro: minutes => `みんな～！数取りゲームしよう！\n0~100の中で最も大きい数字を取った人が勝ちだよ！他の人と被ったらだめだよ～！\n制限時間は5分！数字はこの投稿にリプライで送ってね！`,
 
-		finish: 'ゲームの結果発表！',
+		finish: 'ゲームの結果発表～！',
 
-		finishWithWinner: user => `今回は${user}さんの勝ち！またやろっ♪`,
+		finishWithWinner: user => `今回は${user}さんの勝ちさんの勝ち！またやろっ♪`,
 
 		finishWithNoWinner: '今回は勝者はいなかったよ... またやろうね♪',
 
@@ -285,7 +285,7 @@ export default {
 	 * 占い
 	 */
 	fortune: {
-		cw: name => name ? `私が今日の${name}の運勢を占ったよ...` : '私が今日のあなたの運勢を占ったよ...',
+		cw: name => name ? `私が今日の${name}の運勢を占ったよ～...` : '私が今日のあなたの運勢を占ったよ～...',
 	},
 
 	/**
@@ -305,7 +305,7 @@ export default {
 	 * バレンタイン
 	 */
 	valentine: {
-		chocolateForYou: name => name ? `${name}、えっと... チョコレート作ったからよかったらどうぞ！🍫` : 'チョコレート作ったからよかったらどうぞ！🍫',
+		chocolateForYou: name => name ? `${name}、えっと... チョコレート作ったからよかったら！🍫` : 'チョコレート作ったからよかったら！🍫',
 	},
 
 	server: {
