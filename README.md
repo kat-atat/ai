@@ -29,3 +29,7 @@ MIT
 
 ## Awards
 <img src="./WorksOnMyMachine.png" alt="Works on my machine" height="120">
+
+## どこ改造した？
+まずはそもそもフォーク元がオリジナルではなくめいめい(@mei23)による改造バージョン。(通称いあ)
+このリポジトリでは単にセリフを変更した程度。
