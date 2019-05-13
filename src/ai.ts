@@ -1,5 +1,6 @@
 // AI CORE
 
+import * as fs from 'fs';
 import autobind from 'autobind-decorator';
 import * as loki from 'lokijs';
 import * as request from 'request-promise-native';
@@ -59,6 +60,7 @@ export default class 藍 {
 	}>;
 
 	public friends: loki.Collection<FriendDoc>;
+	public moduleData: loki.Collection<any>;
 
 	/**
 	 * 藍インスタンスを生成します
@@ -104,6 +106,10 @@ export default class 藍 {
 
 		this.friends = this.getCollection('friends', {
 			indices: ['userId']
+		});
+
+		this.moduleData = this.getCollection('moduleData', {
+			indices: ['module']
 		});
 		//#endregion
 
@@ -280,6 +286,25 @@ export default class 藍 {
 		const friend = new Friend(this, { doc: doc });
 
 		return friend;
+	}
+
+	/**
+	 * ファイルをドライブにアップロードします
+	 */
+	@autobind
+	public async upload(file: Buffer | fs.ReadStream, meta: any) {
+		const res = await request.post({
+			url: `${config.apiUrl}/drive/files/create`,
+			formData: {
+				i: config.i,
+				file: {
+					value: file,
+					options: meta
+				}
+			},
+			json: true
+		});
+		return res;
 	}
 
 	/**

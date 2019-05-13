@@ -263,7 +263,7 @@ export default {
 
 		matakondo: 'また今度やろっ！',
 
-		intro: minutes => `みんな～！数取りゲームしよう！\n0~100の中で最も大きい数字を取った人が勝ちだよ！他の人と被ったらだめだよ～！\n制限時間は5分！数字はこの投稿にリプライで送ってね！`,
+		intro: minutes => `みんな～！数取りゲームしよう！\n0~100の中で最も大きい数字を取った人が勝ちだよ！他の人と被ったらだめだよ～！\n制限時間は${minutes}分！数字はこの投稿にリプライで送ってね！`,
 
 		finish: 'ゲームの結果発表～！',
 
@@ -312,6 +312,17 @@ export default {
 		cpu: 'サーバーの負荷が高いよ。大丈夫かな...？\nマスターは低スペックだから仕方ないって言ってたけど...。'
 	},
 };
+
+
+	maze: {
+		post: '今日の迷路だよ～！ #AiMaze',
+		foryou: '描いたよ～！'
+	},
+
+	chart: {
+		post: 'インスタンスの投稿数だよ～！',
+		foryou: '描いたよ～！'
+	},
 
 export function getSerif(variant: string | string[]): string {
 	if (Array.isArray(variant)) {
