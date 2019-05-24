@@ -143,12 +143,12 @@ export default class extends Module {
 		}
 
 		let type = 'random';
+
+		const m = msg.text.match(/([^\s\.,!\?'"#:\/\[\]]{1,20})チャート/);
+		if (m) type = m[1];
+
 		if (msg.includes(['フォロワー'])) type = 'followers';
 		if (msg.includes(['投稿'])) type = 'userNotes';
-
-		console.log(msg.text);
-		const m = msg.text.match(/(\S{1,20})チャート/);
-		if (m) type = m[1];
 
 		const file = await this.genChart(type, {
 			user: msg.user
