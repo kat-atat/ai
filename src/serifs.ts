@@ -28,19 +28,19 @@ export default {
 
 		erait: {
 			general: name => name ? [
-				`${name}、今日もえらいです！`,
-				`${name}、今日もえらいですよ～♪`
+				`${name}、今日もえらい！`,
+				`${name}、今日もえらいね～♪`
 			] : [
-				`今日もえらいです！`,
-				`今日もえらいですよ～♪`
+				`今日もえらい！`,
+				`今日もえらいね～♪`
 			],
 
 			specify: (thing, name) => name ? [
-				`${name}、${thing}てえらいです！`,
-				`${name}、${thing}てえらいですよ～♪`
+				`${name}、${thing}てえらい！`,
+				`${name}、${thing}てえらいね～♪`
 			] : [
-				`${thing}てえらいです！`,
-				`${thing}てえらいですよ～♪`
+				`${thing}てえらい！`,
+				`${thing}てえらいね～♪`
 			],
 		},
 
