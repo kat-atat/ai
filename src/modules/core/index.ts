@@ -27,6 +27,7 @@ export default class extends Module {
 		return (
 			this.setName(msg) ||
 			this.greet(msg) ||
+			this.erait(msg) ||
 			this.omedeto(msg) ||
 			this.nadenade(msg) ||
 			this.kawaii(msg) ||
@@ -152,6 +153,21 @@ export default class extends Module {
 		}
 
 		return false;
+	}
+
+	@autobind
+	private erait(msg: Message): boolean {
+		const match = msg.extractedText.match(/(.+?)たから褒めて/);
+		if (match) {
+			msg.reply(getSerif(serifs.core.erait.specify(match[1], msg.friend.name)));
+			return true;
+		}
+
+		if (!msg.includes(['褒めて'])) return false;
+
+		msg.reply(getSerif(serifs.core.erait.general(msg.friend.name)));
+
+		return true;
 	}
 
 	@autobind

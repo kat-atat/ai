@@ -14,6 +14,7 @@ Misskey用の日本語Botです。
 	"host": "https:// + あなたのインスタンスのURL (末尾の / は除く)",
 	"i": "藍として動かしたいアカウントのAPIキー",
 	"keywordEnabled": "キーワードを覚える機能 (MeCab が必要) を有効にする場合は true を入れる (無効にする場合は false)",
+	"chartEnabled": "チャート機能を無効化する場合は false を入れてください",
 	"reversiEnabled": "藍とリバーシで対局できる機能を有効にする場合は true を入れる (無効にする場合は false)",
 	"serverMonitoring": "サーバー監視の機能を有効にする場合は true を入れる (無効にする場合は false)",
 	"mecab": "MeCab のインストールパス (ソースからインストールした場合、大体は /usr/local/bin/mecab)"
@@ -21,7 +22,6 @@ Misskey用の日本語Botです。
 ```
 `npm install` して `npm run build` して `npm start` すれば起動できます
 
-時々MeCabの場所が`/usr/bin/mecab`の場合ある。(自分の場合これ)
 ## フォント
 一部の機能にはフォントが必要です。藍にはフォントは同梱されていないので、ご自身でフォントをインストールディレクトリに`font.ttf`という名前で設置してください。
 
@@ -33,11 +33,3 @@ MIT
 
 ## Awards
 <img src="./WorksOnMyMachine.png" alt="Works on my machine" height="120">
-
-## どこ改造した？
-
-まずはそもそもフォーク元がオリジナルではなくめいめい(@mei23)による改造バージョン。(通称いあ)
-
-このリポジトリでは単にセリフを変更した程度。
-
-あとこのREMDMEのインストール項の下にMeCabパスについて追記。

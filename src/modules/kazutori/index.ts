@@ -173,6 +173,7 @@ export default class extends Module {
 		// お流れ
 		if (game.votes.length <= 0) {
 			this.ai.post({
+				visibility: 'public',
 				text: serifs.kazutori.onagare,
 				renoteId: game.postId
 			});
@@ -212,6 +213,7 @@ export default class extends Module {
 			: serifs.kazutori.finishWithNoWinner);
 
 		this.ai.post({
+			visibility: 'public',
 			text: text,
 			cw: serifs.kazutori.finish,
 			renoteId: game.postId

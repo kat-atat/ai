@@ -72,6 +72,7 @@ export default class Message {
 			});
 		} else {
 			return await this.ai.post({
+				visibility: 'public',
 				replyId: this.messageOrNote.id,
 				text: text,
 				cw: cw,
@@ -95,6 +96,7 @@ export default class Message {
 			});
 		} else {
 			return await this.ai.post({
+				visibility: 'public',
 				replyId: this.messageOrNote.id,
 				text: text,
 				fileIds: [file.id],
