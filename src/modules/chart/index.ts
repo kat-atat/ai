@@ -24,8 +24,8 @@ export default class extends Module {
 	@autobind
 	private async post() {
 		const now = new Date();
-		if (now.getHours() !== 23) return;
-		const date = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+		if (now.getUTCHours() !== 1) return;
+		const date = `${now.getUTCFullYear()}-${now.getUTCMonth()}-${now.getUTCDate()}`;
 		const data = this.getData();
 		if (data.lastPosted == date) return;
 		data.lastPosted = date;
@@ -57,11 +57,7 @@ export default class extends Module {
 			chart = {
 				title: `@${params.user.username}さんの投稿数`,
 				datasets: [{
-					data: data.diffs.normal
-				}, {
-					data: data.diffs.reply
-				}, {
-					data: data.diffs.renote
+					data: data.inc
 				}]
 			};
 		} else if (type === 'followers') {
@@ -82,16 +78,11 @@ export default class extends Module {
 		} else if (type === 'notes') {
 			const data = await this.ai.api('charts/notes', {
 				span: 'day',
-				limit: 30,
+				limit: 31,
 			});
-
 			chart = {
 				datasets: [{
-					data: data.local.diffs.normal
-				}, {
-					data: data.local.diffs.reply
-				}, {
-					data: data.local.diffs.renote
+					data: data.local.inc.splice(1)
 				}]
 			};
 		} else {

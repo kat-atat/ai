@@ -4,7 +4,10 @@
   "scripts": {
     "start": "node ./built",
     "build": "tsc"
-  },
+	},
+	"resolutions": {
+		"lodash": "^4.17.13"
+	},
   "dependencies": {
     "@types/chalk": "2.2.0",
     "@types/lokijs": "1.5.2",

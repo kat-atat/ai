@@ -91,10 +91,10 @@ export function genMaze(seed, complexity?) {
 		mazeSize = 11 + rand(21);
 	}
 
-	const donut = rand(3) === 0;
+	const donut = false;
 	const donutWidth = 1 + Math.floor(mazeSize / 8) + rand(Math.floor(mazeSize / 4));
 
-	const straightMode = rand(3) === 0;
+	const straightMode = false;
 	const straightness = 5 + rand(10);
 
 	// maze (filled by 'empty')
