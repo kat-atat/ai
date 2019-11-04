@@ -336,7 +336,7 @@ export default {
 	},
 
 	chart: {
-		post: '今日のインスタンスの投稿数だよ！',
+		post: 'インスタンスの投稿数だよ！',
 		foryou: '描いたよ！'
 	},
 };
