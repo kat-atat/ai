@@ -22,7 +22,7 @@ import FollowModule from './modules/follow';
 import ValentineModule from './modules/valentine';
 import MazeModule from './modules/maze';
 import ChartModule from './modules/chart';
-import StartModule from './modules/start';
+//import StartModule from './modules/start';
 
 import chalk from 'chalk';
 import * as request from 'request-promise-native';
@@ -79,7 +79,7 @@ promiseRetry(retry => {
 		new VersionModule(),
 		new MazeModule(),
 		new ChartModule(),
-		new StartModule(),
+//		new StartModule(),
 	]);
 }).catch(e => {
 	log(chalk.red('Failed to fetch the account'));
