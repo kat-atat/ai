@@ -1,7 +1,5 @@
 import autobind from 'autobind-decorator';
 import Module from '../../module';
-import Message from '../../message';
-import config from '../../config';
 //import serifs from '../../serifs';
 
 export default class extends Module {
@@ -10,10 +8,17 @@ export default class extends Module {
 	@autobind
 	public install() {
 
+		setTimeout(() => {
 		this.ai.post({ text: `zzz...っは！？` });
-		this.ai.post({ text: `寝てたっ！` });
+		}, 2000);
 
-		return {};
+		setTimeout(() => {
+		this.ai.post({ text: `寝てたっ！` });
+		}, 3000);
+
+		return {
+			
+		};
 	}
 
     
