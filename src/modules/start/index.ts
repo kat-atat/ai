@@ -14,11 +14,11 @@ export default class extends Module {
 
 		setTimeout(() => {
 		this.ai.post({ text: `( ˘﹃˘)эzzz. . . (。ﾟωﾟ) ﾊｯ!` });
-		}, 2000);
+		}, 4000);
 
 		setTimeout(() => {
 		this.ai.post({ text: `ねっ..寝てたっ！` });
-		}, 3000);
+		}, 7000);
 
 		return {
 			
