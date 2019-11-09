@@ -18,7 +18,7 @@ export default class extends Module {
 
 		setTimeout(() => {
 		this.ai.post({ text: `ねっ..寝てたっ！` });
-		}, 7000);
+		}, 9000);
 
 		return {
 			
