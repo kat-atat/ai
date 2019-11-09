@@ -10,7 +10,7 @@ export default class extends Module {
 
 		setTimeout(() => {
 			this.ai.post({ text: `<small>systemctl restart ia ...</small>` });
-			}, 3000);
+			}, 1000);
 
 		setTimeout(() => {
 		this.ai.post({ text: `( ˘﹃˘)эzzz. . . (。ﾟωﾟ) ﾊｯ!` });
