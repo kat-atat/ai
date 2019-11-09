@@ -25,7 +25,7 @@ export default class extends Module {
 		const dice = parseInt(query[2], 10);
 
 		if (times < 1 || times > 10) return false;
-		if (dice < 2 || dice > 1000) return false;
+		if (dice < 2 || dice > Math.pow(2, 48)) return false;
 
 		const results: number[] = [];
 
