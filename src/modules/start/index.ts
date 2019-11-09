@@ -9,11 +9,15 @@ export default class extends Module {
 	public install() {
 
 		setTimeout(() => {
-		this.ai.post({ text: `zzz...っは！？` });
+			this.ai.post({ text: `<small>systemctl restart ia ...</small>` });
+			}, 3000);
+
+		setTimeout(() => {
+		this.ai.post({ text: `( ˘﹃˘)эzzz. . . (。ﾟωﾟ) ﾊｯ!` });
 		}, 2000);
 
 		setTimeout(() => {
-		this.ai.post({ text: `寝てたっ！` });
+		this.ai.post({ text: `ねっ..寝てたっ！` });
 		}, 3000);
 
 		return {
