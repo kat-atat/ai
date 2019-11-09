@@ -5,14 +5,16 @@ import config from '../../config';
 //import serifs from '../../serifs';
 
 export default class extends Module {
-    mentionHook: any;
+	public readonly name = 'start';
+	
 	@autobind
 	public install() {
-		return {
-			mentionHook: this.mentionHook
-		};
-    }
+
+		this.ai.post({ text: `zzz...っは！？` });
+		this.ai.post({ text: `寝てたっ！` });
+
+		return {};
+	}
+
     
-    public readonly name = 'start';
-    this.ai.post({ text: `zzz...っは！？` });
 }
