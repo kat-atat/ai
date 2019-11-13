@@ -20,6 +20,7 @@ Misskey用の日本語Botです。
 
 ･このプログラムではないが同じアカウントで使う前提のPHPプログラムが[私の別リポジトリ](https://github.com/Leies-202/mis-php-list)にあります。
 
+･フォーク元であるめいめいのリポジトリでは何が改造されてるかについては[こちらの取説の下部](https://github.com/Leies-202/ai/blob/myia/torisetu.md)をご確認下さい。
 ## インストール
 > Node.js と npm と MeCab (オプション) がインストールされている必要があります。
 
