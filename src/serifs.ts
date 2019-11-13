@@ -140,7 +140,7 @@ export default {
 	},
 
 	keyword: {
-		learned: (word, reading) => `(${word}..... ${reading}..... 覚えだっ！)`,
+		learned: (word, reading) => `(${word}..... ${reading}..... 覚えたっ！)`,
 
 		remembered: (word) => `${word}`
 	},
