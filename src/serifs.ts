@@ -119,7 +119,7 @@ export default {
 		},
 
 		batou: {
-			love: 'お、おたんこなす！',
+			love: 'えっと…、お、おバカっ！！！',
 
 			normal: '(じとー…)',
 
