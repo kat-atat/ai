@@ -4,7 +4,7 @@ import Friend from './friend';
 import { User } from './misskey/user';
 import includes from './utils/includes';
 import or from './utils/or';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import config from './config';
 const delay = require('timeout-as-promise');
 

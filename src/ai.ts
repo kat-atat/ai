@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import autobind from 'autobind-decorator';
 import * as loki from 'lokijs';
 import * as request from 'request-promise-native';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as uuid from 'uuid/v4';
 const delay = require('timeout-as-promise');
 

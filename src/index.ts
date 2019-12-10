@@ -25,7 +25,7 @@ import ChartModule from './modules/chart';
 import StartModule from './modules/start';
 import tyoModule from './modules/tyo';
 
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as request from 'request-promise-native';
 const promiseRetry = require('promise-retry');
 
