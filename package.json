@@ -19,7 +19,7 @@
     "@types/uuid": "3.4.6",
     "@types/ws": "6.0.4",
     "autobind-decorator": "2.4.0",
-    "canvas": "2.6.0",
+    "canvas": "2.6.1",
     "chalk": "3.0.0",
     "lokijs": "1.5.8",
     "mecab-async": "0.1.2",
