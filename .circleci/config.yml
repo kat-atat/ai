@@ -29,6 +29,11 @@ jobs:
       - run: yarn install
       
       - run:
+          name: Configure
+          command: |
+            cp .circleci/ia/config.json ~/repo
+
+      - run:
           name: Build
           command: |
             yarn build
@@ -38,6 +43,3 @@ jobs:
           paths:
             - node_modules
           key: yarn-v1-arch-{{ arch }}-env-{{ .Environment.variableName }}-package-{{ checksum "package.json" }}-lock-{{ checksum "yarn.lock" }}
-
-      # run tests!
-      - run: yarn start
