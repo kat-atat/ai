@@ -27,11 +27,6 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-      
-      - run:
-          name: Configure
-          command: |
-            cp .circleci/ia/config.json ~/repo
 
       - run:
           name: Build
