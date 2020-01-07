@@ -56,7 +56,7 @@ export default class extends Module {
 			}
 
 			// 直近のゲームから時間経ってない場合
-			if (Date.now() - recentGame.startedAt < 1000 * 60 * 30) {
+			if (Date.now() - recentGame.startedAt < 1000 * 60 * 20) {
 				msg.reply(serifs.kazutori.matakondo);
 				return true;
 			}
@@ -83,7 +83,7 @@ export default class extends Module {
 
 		game.votes.push({
 			user: this.ai.account,
-			number: Math.floor(Math.random() * 100) + 1
+			number: Math.floor(Math.random() * 5) + 1 + 95
 		});
 
 		return true;
@@ -98,11 +98,6 @@ export default class extends Module {
 		const game = this.games.findOne({
 			isEnded: false
 		});
-
-		// 既に数字を取っていたら
-		if (game.votes.some(x => x.user.id == msg.userId)) return {
-			reaction: 'confused'
-		};
 
 		const text = msg.extractedText;
 		this.log(`Extracted: '${text}'`);
@@ -127,6 +122,8 @@ export default class extends Module {
 		this.log(`Voted ${num} by ${msg.user.id}`);
 
 		// 投票
+		game.votes = game.votes.filter(x => x.user.id !== msg.user.id);
+
 		game.votes.push({
 			user: {
 				id: msg.user.id,

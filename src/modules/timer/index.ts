@@ -48,7 +48,7 @@ export default class extends Module {
 		const str = `${hours ? hoursQuery[0] : ''}${minutes ? minutesQuery[0] : ''}${seconds ? secondsQuery[0] : ''}`;
 
 		// タイマーセット
-		this.setTimeoutWithPersistence(time, {
+		this.setTimeoutWithPersistence(time + 2000, {
 			isDm: msg.isDm,
 			msgId: msg.id,
 			userId: msg.friend.userId,
