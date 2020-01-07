@@ -27,11 +27,17 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-
+      
+      - run:
+          name: Build
+          command: |
+            yarn build
+            touch yarn.lock
+            
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: yarn-v1-arch-{{ arch }}-env-{{ .Environment.variableName }}-package-{{ checksum "package.json" }}-lock-{{ checksum "yarn.lock" }}
 
       # run tests!
       - run: yarn start
