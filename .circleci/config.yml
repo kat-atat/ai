@@ -1,9 +1,20 @@
 version: 2.1 # use CircleCI 2.1
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/mern-starter # directory where steps will run
     steps: # a collection of executable commands
-      - checkout # special step to check out source code to working directory
+      - checkout
+      - run:
+          name: Ensure yarn.lock
+          command: |
+            touch yarn.lock
+      - restore_cache:
+          name: Restore npm package caches
+          keys:
+            - yarn-v1-arch-{{ arch }}-env-{{ .Environment.variableName }}-package-{{ checksum "package.json" }}-lock-{{ checksum "yarn.lock" }}
+            - yarn-v1-arch-{{ arch }}-env-{{ .Environment.variableName }}-package-{{ checksum "package.json" }}-
+            - yarn-v1-arch-{{ arch }}-env-{{ .Environment.variableName }}-
+            - yarn-v1-arch-{{ arch }}-
+            - yarn-v1-
       - run:
           name: Install Dependencies
           command: |
@@ -13,6 +24,15 @@ jobs: # a collection of steps
           command: |
             yarn build
             touch yarn.lock
+      - save_cache:
+          name: Cache npm packages
+          key: yarn-v1-arch-{{ arch }}-env-{{ .Environment.variableName }}-package-{{ checksum "package.json" }}-lock-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
       - run:
           name: Start
           command: |
