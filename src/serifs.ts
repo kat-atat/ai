@@ -44,24 +44,6 @@ export default {
 			],
 		},
 
-		erait: {
-			general: name => name ? [
-				`${name}、今日もえらいです！`,
-				`${name}、今日もえらいですよ～♪`
-			] : [
-				`今日もえらいです！`,
-				`今日もえらいですよ～♪`
-			],
-
-			specify: (thing, name) => name ? [
-				`${name}、${thing}てえらいです！`,
-				`${name}、${thing}てえらいですよ～♪`
-			] : [
-				`${thing}てえらいです！`,
-				`${thing}てえらいですよ～♪`
-			],
-		},
-
 		okaeri: {
 			love: name => name ? [
 				`おかえり、${name}♪`,
@@ -321,7 +303,7 @@ export default {
 	 * 占い
 	 */
 	fortune: {
-		cw: name => name ? `私が今日の${name}の運勢を占ったよ...` : '私が今日のあなたの運勢を占ったよ...',
+		cw: name => name ? `私が今日の${name}の運勢を占ったよ...` : '私が今日の君の運勢を占ったよ...',
 	},
 
 	/**
