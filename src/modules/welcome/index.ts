@@ -22,6 +22,14 @@ export default class extends Module {
 					renoteId: note.id
 				});
 			}, 3000);
+			
+			setTimeout(() => {
+				this.ai.api('notes/create', {
+					visibility: 'public',
+					replyId: note.id,
+					text: 'ようこそ！'
+				});
+			}, 4000);
 
 			setTimeout(() => {
 				this.ai.api('notes/reactions/create', {
