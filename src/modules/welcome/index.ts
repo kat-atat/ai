@@ -27,7 +27,7 @@ export default class extends Module {
 				this.ai.api('notes/create', {
 					visibility: 'public',
 					replyId: note.id,
-					text: 'ようこそ！'
+					text: 'ようこそ！\nこのリンク先に注意点とかあるから、\n見てくれると嬉しいなっ☆\n'
 				});
 			}, 4000);
 
