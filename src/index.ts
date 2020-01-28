@@ -23,7 +23,6 @@ import ValentineModule from './modules/valentine';
 import MazeModule from './modules/maze';
 import ChartModule from './modules/chart';
 import StartModule from './modules/start';
-import tyoModule from './modules/tyo';
 
 import * as chalk from 'chalk';
 import * as request from 'request-promise-native';
@@ -81,7 +80,6 @@ promiseRetry(retry => {
 		new MazeModule(),
 		new ChartModule(),
 		new StartModule(),
-		new tyoModule(),
 	]);
 }).catch(e => {
 	log(chalk.red('Failed to fetch the account'));
