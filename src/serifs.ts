@@ -22,7 +22,7 @@ export default {
 		},
 */
 
-		goodNight: name => name ? `おやすみ、${name}！` : 'おやすみ！',
+		goodNight: name => name ? `おやすみ、${name}！いい夢見てね〜` : 'おやすみ！いい夢見てね〜',
 
 		omedeto: name => name ? `ありがとう、${name}♪` : 'ありがとう♪',
 
@@ -44,11 +44,11 @@ export default {
 			],
 
 			specify2: (thing, name) => name ? [
-				`${name}、${thing}でえらいです！`,
-				`${name}、${thing}でえらいですよ～♪`
+				`${name}、${thing}でえらい！`,
+				`${name}、${thing}でえらいね～♪`
 			] : [
-				`${thing}でえらいです！`,
-				`${thing}でえらいですよ～♪`
+				`${thing}でえらい！`,
+				`${thing}でえらいね～♪`
 			],
 		},
 
@@ -63,20 +63,20 @@ export default {
 
 			love2: name => name ? `おかえりなさい♡♡♡${name}っっ♡♡♡♡♡` : 'おかえりなさい♡♡♡ご主人様っっ♡♡♡♡♡',
 
-			normal: name => name ? `おかえり、${name}！` : 'おかえり！',
+			normal: name => name ? `おかえり、${name}！` : 'おかえり！遊ぶ？休む？',
 		},
 
 		itterassyai: {
-			love: name => name ? `いってらっしゃい、${name}♪` : 'いってらっしゃい♪',
+			love: name => name ? `いってらっしゃい、${name}♪` : 'いってらっしゃい♪気をつけてね〜。',
 
 			normal: name => name ? `いってらっしゃい、${name}！` : 'いってらっしゃい！',
 		},
 
-		tooLong: '長すぎる気がするよ...',
+		tooLong: '長すぎるよ〜...',
 
-		invalidName: '発音が難しい気がするよ',
+		invalidName: 'うーん、ちょっと発音が難しいなぁ…',
 
-		requireMoreLove: 'もっと仲良くなったら考えてあげてもいいよ？',
+		requireMoreLove: 'もっと仲良くなったら考えてあげる〜',
 
 		nadenade: {
 			normal: 'ひゃっ…！ びっくりした～',
