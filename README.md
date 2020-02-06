@@ -3,7 +3,7 @@
 
 **※In this repository, Ai is basically called iA.**
 
-[![CircleCI](https://circleci.com/gh/Leies-202/ai/tree/myia.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/Leies-202/ai/tree/myia)
+[![CircleCI](https://circleci.com/gh/Leies-202/ai/tree/myia.svg?style=shield)](https://circleci.com/gh/Leies-202/ai/tree/myia)
 
 ## これなに
 Misskey用の日本語Botです。
