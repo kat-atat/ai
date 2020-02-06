@@ -3,6 +3,8 @@
 
 **※In this repository, Ai is basically called iA.**
 
+[![CircleCI](https://img.shields.io/circleci/project/github/syuilo/misskey.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/leies-202/ai)
+
 ## これなに
 Misskey用の日本語Botです。
 
