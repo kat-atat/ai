@@ -88,7 +88,7 @@ export default class extends Module {
 	private mfmVersion = (v): string => {
 		if (v == null) return v;
 		return v.match(/^\d+\.\d+\.\d+$/)
-		? `[${v}](https://github.com/syuilo/misskey/releases/tag/${v})`
+		? `[${v}](https://github.com/mei23/misskey/releases/tag/${v})`
 		: v;
 	}
 
