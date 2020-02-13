@@ -41,7 +41,7 @@ export default class extends Module {
 			return true;
 		}
 
-		const pre = time ==  300 * 1000 && /(?:ぶっ込み飯|カレーメシ|ぶっこみ飯)/.test(msg.text) ? 'またカップめし？私にも欲しいな！' : '';
+		const pre = time ==  300 * 1000 && /(?:カレーメシ|ぶっこみ飯)/.test(msg.text) ? 'またカップめし？私にも欲しいな！' : '';
 
 		msg.reply(pre + serifs.timer.set);
 
