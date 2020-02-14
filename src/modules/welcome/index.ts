@@ -18,6 +18,7 @@ export default class extends Module {
 		if (note.isFirstNote) {
 			setTimeout(() => {
 				this.ai.api('notes/create', {
+					visibility: 'public',
 					renoteId: note.id
 				});
 			}, 3000);

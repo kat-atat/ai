@@ -20,8 +20,10 @@ import ServerModule from './modules/server';
 import VersionModule from './modules/version';
 import FollowModule from './modules/follow';
 import ValentineModule from './modules/valentine';
+import MazeModule from './modules/maze';
+import ChartModule from './modules/chart';
 
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as request from 'request-promise-native';
 const promiseRetry = require('promise-retry');
 
@@ -40,7 +42,10 @@ promiseRetry(retry => {
 	log(`Account fetching... ${chalk.gray(config.host)}`);
 
 	// アカウントをフェッチ
-	return request.post(`${config.apiUrl}/i`, {
+	return request.post({
+		url: `${config.apiUrl}/i`, 
+		forever: true,
+		timeout: 30 * 1000,
 		json: {
 			i: config.i
 		}
@@ -71,6 +76,8 @@ promiseRetry(retry => {
 		new ValentineModule(),
 		new KeywordModule(),
 		new VersionModule(),
+		new MazeModule(),
+		new ChartModule(),
 	]);
 }).catch(e => {
 	log(chalk.red('Failed to fetch the account'));

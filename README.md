@@ -14,12 +14,16 @@ Misskey用の日本語Botです。
 	"host": "https:// + あなたのインスタンスのURL (末尾の / は除く)",
 	"i": "藍として動かしたいアカウントのAPIキー",
 	"keywordEnabled": "キーワードを覚える機能 (MeCab が必要) を有効にする場合は true を入れる (無効にする場合は false)",
+	"chartEnabled": "チャート機能を無効化する場合は false を入れてください",
 	"reversiEnabled": "藍とリバーシで対局できる機能を有効にする場合は true を入れる (無効にする場合は false)",
 	"serverMonitoring": "サーバー監視の機能を有効にする場合は true を入れる (無効にする場合は false)",
 	"mecab": "MeCab のインストールパス (ソースからインストールした場合、大体は /usr/local/bin/mecab)"
 }
 ```
 `npm install` して `npm run build` して `npm start` すれば起動できます
+
+## フォント
+一部の機能にはフォントが必要です。藍にはフォントは同梱されていないので、ご自身でフォントをインストールディレクトリに`font.ttf`という名前で設置してください。
 
 ## 記憶
 藍は記憶の保持にインメモリデータベースを使用しており、藍のインストールディレクトリに `memory.json` という名前で永続化されます。

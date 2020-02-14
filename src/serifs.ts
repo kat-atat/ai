@@ -26,6 +26,32 @@ export default {
 
 		omedeto: name => name ? `ありがとうございます、${name}♪` : 'ありがとうございます♪',
 
+		erait: {
+			general: name => name ? [
+				`${name}、今日もえらいです！`,
+				`${name}、今日もえらいですよ～♪`
+			] : [
+				`今日もえらいです！`,
+				`今日もえらいですよ～♪`
+			],
+
+			specify: (thing, name) => name ? [
+				`${name}、${thing}てえらいです！`,
+				`${name}、${thing}てえらいですよ～♪`
+			] : [
+				`${thing}てえらいです！`,
+				`${thing}てえらいですよ～♪`
+			],
+
+			specify2: (thing, name) => name ? [
+				`${name}、${thing}でえらいです！`,
+				`${name}、${thing}でえらいですよ～♪`
+			] : [
+				`${thing}でえらいです！`,
+				`${thing}でえらいですよ～♪`
+			],
+		},
+
 		okaeri: {
 			love: name => name ? [
 				`おかえりなさい、${name}♪`,
@@ -101,7 +127,7 @@ export default {
 		},
 
 		batou: {
-			love: 'おたんこなす！',
+			love: 'えっと…、お、おバカさん…？',
 
 			normal: '(じとー…)',
 
@@ -263,7 +289,7 @@ export default {
 
 		matakondo: 'また今度やりましょう！',
 
-		intro: 'みなさん、数取りゲームしましょう！\n0~100の中で最も大きい数字を取った人が勝ちです。他の人と被ったらだめですよ～\n制限時間は5分です。数字はこの投稿にリプライで送ってくださいね！',
+		intro: minutes => `みなさん、数取りゲームしましょう！\n0~100の中で最も大きい数字を取った人が勝ちです。他の人と被ったらだめですよ～\n制限時間は${minutes}分です。数字はこの投稿にリプライで送ってくださいね！`,
 
 		finish: 'ゲームの結果発表です！',
 
@@ -310,6 +336,16 @@ export default {
 
 	server: {
 		cpu: 'サーバーの負荷が高そうです。大丈夫でしょうか...？'
+	},
+
+	maze: {
+		post: '今日の迷路です！ #AiMaze',
+		foryou: '描きました！'
+	},
+
+	chart: {
+		post: 'インスタンスの投稿数です！',
+		foryou: '描きました！'
 	},
 };
 

@@ -27,6 +27,7 @@ export default class extends Module {
 		return (
 			this.setName(msg) ||
 			this.greet(msg) ||
+			this.erait(msg) ||
 			this.omedeto(msg) ||
 			this.nadenade(msg) ||
 			this.kawaii(msg) ||
@@ -152,6 +153,33 @@ export default class extends Module {
 		}
 
 		return false;
+	}
+
+	@autobind
+	private erait(msg: Message): boolean {
+		const match = msg.extractedText.match(/(.+?)た(から|ので)(褒|ほ)めて/);
+		if (match) {
+			msg.reply(getSerif(serifs.core.erait.specify(match[1], msg.friend.name)));
+			return true;
+		}
+
+		const match2 = msg.extractedText.match(/(.+?)る(から|ので)(褒|ほ)めて/);
+		if (match2) {
+			msg.reply(getSerif(serifs.core.erait.specify(match2[1], msg.friend.name)));
+			return true;
+		}
+
+		const match3 = msg.extractedText.match(/(.+?)だから(褒|ほ)めて/);
+		if (match3) {
+			msg.reply(getSerif(serifs.core.erait.specify(match3[1], msg.friend.name)));
+			return true;
+		}
+
+		if (!msg.includes(['褒めて', 'ほめて'])) return false;
+
+		msg.reply(getSerif(serifs.core.erait.general(msg.friend.name)));
+
+		return true;
 	}
 
 	@autobind
@@ -294,7 +322,7 @@ export default class extends Module {
 
 	@autobind
 	private itai(msg: Message): boolean {
-		if (!msg.or(['痛い', 'いたい'])) return false;
+		if (!msg.or(['痛い', 'いたい']) && !msg.extractedText.endsWith('痛い')) return false;
 
 		// メッセージのみ
 		if (!msg.isDm) return true;

@@ -1,9 +1,10 @@
 // AI CORE
 
+import * as fs from 'fs';
 import autobind from 'autobind-decorator';
 import * as loki from 'lokijs';
 import * as request from 'request-promise-native';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as uuid from 'uuid/v4';
 const delay = require('timeout-as-promise');
 
@@ -59,6 +60,7 @@ export default class 藍 {
 	}>;
 
 	public friends: loki.Collection<FriendDoc>;
+	public moduleData: loki.Collection<any>;
 
 	/**
 	 * 藍インスタンスを生成します
@@ -104,6 +106,10 @@ export default class 藍 {
 
 		this.friends = this.getCollection('friends', {
 			indices: ['userId']
+		});
+
+		this.moduleData = this.getCollection('moduleData', {
+			indices: ['module']
 		});
 		//#endregion
 
@@ -283,6 +289,25 @@ export default class 藍 {
 	}
 
 	/**
+	 * ファイルをドライブにアップロードします
+	 */
+	@autobind
+	public async upload(file: Buffer | fs.ReadStream, meta: any) {
+		const res = await request.post({
+			url: `${config.apiUrl}/drive/files/create`,
+			formData: {
+				i: config.i,
+				file: {
+					value: file,
+					options: meta
+				}
+			},
+			json: true
+		});
+		return res;
+	}
+
+	/**
 	 * 投稿します
 	 */
 	@autobind
@@ -306,7 +331,10 @@ export default class 藍 {
 	 */
 	@autobind
 	public api(endpoint: string, param?: any) {
-		return request.post(`${config.apiUrl}/${endpoint}`, {
+		return request.post({
+			url: `${config.apiUrl}/${endpoint}`,
+			forever: true,
+			timeout: 30 * 1000,
 			json: Object.assign({
 				i: config.i
 			}, param)

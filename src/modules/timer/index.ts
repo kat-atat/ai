@@ -41,12 +41,14 @@ export default class extends Module {
 			return true;
 		}
 
-		msg.reply(serifs.timer.set);
+		const pre = time == 300 * 1000 && /カレーメシ/.test(msg.text) ? 'カレーメシ私にも食べさせてください' : '';
+
+		msg.reply(pre + serifs.timer.set);
 
 		const str = `${hours ? hoursQuery[0] : ''}${minutes ? minutesQuery[0] : ''}${seconds ? secondsQuery[0] : ''}`;
 
 		// タイマーセット
-		this.setTimeoutWithPersistence(time, {
+		this.setTimeoutWithPersistence(time + 2000, {
 			isDm: msg.isDm,
 			msgId: msg.id,
 			userId: msg.friend.userId,

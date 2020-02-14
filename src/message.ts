@@ -4,7 +4,7 @@ import Friend from './friend';
 import { User } from './misskey/user';
 import includes from './utils/includes';
 import or from './utils/or';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import config from './config';
 const delay = require('timeout-as-promise');
 
@@ -72,8 +72,34 @@ export default class Message {
 			});
 		} else {
 			return await this.ai.post({
+				visibility: 'public',
 				replyId: this.messageOrNote.id,
 				text: text,
+				cw: cw,
+				renoteId: renote
+			});
+		}
+	}
+
+	@autobind
+	public async replyWithFile(text: string, file: any, cw?: string, renote?: string) {
+		if (text == null) return;
+
+		this.ai.log(`>>> Sending reply to ${chalk.underline(this.id)}`);
+
+		await delay(2000);
+
+		if (this.isDm) {
+			return await this.ai.sendMessage(this.messageOrNote.userId, {
+				text: text,
+				fileId: file.id
+			});
+		} else {
+			return await this.ai.post({
+				visibility: 'public',
+				replyId: this.messageOrNote.id,
+				text: text,
+				fileIds: [file.id],
 				cw: cw,
 				renoteId: renote
 			});

@@ -27,6 +27,17 @@ export default class extends Module {
 		// マッチしたとき
 		this.reversiConnection.on('matched', msg => this.onReversiGameStart(msg));
 
+		if (config.reversiEnabled) {
+			const mainStream = this.ai.connection.useSharedConnection('main');
+			mainStream.on('pageEvent', msg => {
+				if (msg.event === 'inviteReversi') {
+					this.ai.api('games/reversi/match', {
+						userId: msg.user.id
+					});
+				}
+			});
+		}
+
 		return {
 			mentionHook: this.mentionHook
 		};
@@ -118,7 +129,7 @@ export default class extends Module {
 			}
 		});
 
-		ai.on('message', msg => {
+		ai.on('message', (msg: any) => {
 			if (msg.type == 'put') {
 				gw.send('set', {
 					pos: msg.pos

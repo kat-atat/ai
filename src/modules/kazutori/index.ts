@@ -20,6 +20,8 @@ type Game = {
 	postId: string;
 };
 
+const limitMinutes = 10;
+
 export default class extends Module {
 	public readonly name = 'kazutori';
 
@@ -54,14 +56,14 @@ export default class extends Module {
 			}
 
 			// 直近のゲームから時間経ってない場合
-			if (Date.now() - recentGame.startedAt < 1000 * 60 * 30) {
+			if (Date.now() - recentGame.startedAt < 1000 * 60 * 60) {
 				msg.reply(serifs.kazutori.matakondo);
 				return true;
 			}
 		}
 
 		const post = await this.ai.post({
-			text: serifs.kazutori.intro
+			text: serifs.kazutori.intro(limitMinutes)
 		});
 
 		this.games.insertOne({
@@ -81,7 +83,7 @@ export default class extends Module {
 
 		game.votes.push({
 			user: this.ai.account,
-			number: Math.floor(Math.random() * 100) + 1
+			number: Math.floor(Math.random() * 5) + 1 + 95
 		});
 
 		return true;
@@ -96,11 +98,6 @@ export default class extends Module {
 		const game = this.games.findOne({
 			isEnded: false
 		});
-
-		// 既に数字を取っていたら
-		if (game.votes.some(x => x.user.id == msg.userId)) return {
-			reaction: 'confused'
-		};
 
 		const text = msg.extractedText;
 		this.log(`Extracted: '${text}'`);
@@ -125,6 +122,8 @@ export default class extends Module {
 		this.log(`Voted ${num} by ${msg.user.id}`);
 
 		// 投票
+		game.votes = game.votes.filter(x => x.user.id !== msg.user.id);
+
 		game.votes.push({
 			user: {
 				id: msg.user.id,
@@ -137,7 +136,7 @@ export default class extends Module {
 		this.games.update(game);
 
 		return {
-			reaction: 'love'
+			reaction: 'like'
 		};
 	}
 
@@ -152,8 +151,8 @@ export default class extends Module {
 
 		if (game == null) return;
 
-		// ゲーム開始から5分以上経過していたら
-		if (Date.now() - game.startedAt >= 1000 * 60 * 5) {
+		// 制限時間が経過していたら
+		if (Date.now() - game.startedAt >= 1000 * 60 * limitMinutes) {
 			this.finish(game);
 		}
 	}
@@ -171,6 +170,7 @@ export default class extends Module {
 		// お流れ
 		if (game.votes.length <= 0) {
 			this.ai.post({
+				visibility: 'public',
 				text: serifs.kazutori.onagare,
 				renoteId: game.postId
 			});
@@ -210,6 +210,7 @@ export default class extends Module {
 			: serifs.kazutori.finishWithNoWinner);
 
 		this.ai.post({
+			visibility: 'public',
 			text: text,
 			cw: serifs.kazutori.finish,
 			renoteId: game.postId
