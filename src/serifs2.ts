@@ -4,7 +4,7 @@ export default {
 	core: {
 		setNameOk: name => `わかった！これからは${name}って呼ぶね！`,
 
-		san: 'さん付けした方がいい？',
+		san: 'さん付けした方がいい？(｢はい｣か｢いいえ｣で答えてね〜)',
 
 		yesOrNo: '「はい」か「いいえ」しかわからないよ...',
 
@@ -22,7 +22,7 @@ export default {
 		},
 */
 
-		goodNight: name => name ? `おやすみ、${name}！` : 'おやすみ！',
+		goodNight: name => name ? `おやすみ、${name}！いい夢見てね〜` : 'おやすみ！いい夢見てね〜',
 
 		omedeto: name => name ? `ありがとう、${name}♪` : 'ありがとう♪',
 
@@ -42,6 +42,14 @@ export default {
 				`${thing}てえらい！`,
 				`${thing}てえらいね～♪`
 			],
+
+			specify2: (thing, name) => name ? [
+				`${name}、${thing}でえらい！`,
+				`${name}、${thing}でえらいね～♪`
+			] : [
+				`${thing}でえらい！`,
+				`${thing}でえらいね～♪`
+			],
 		},
 
 		okaeri: {
@@ -49,26 +57,26 @@ export default {
 				`おかえり、${name}♪`,
 				`おかえりなさいっ、${name}っ。`
 			] : [
-				'おかえり♪',
-				'おかえりなさいっ、ご主人様っ。'
+				'おかえり♪ゆっくり休んで〜♪',
+				'おかえりなさいっ、ご主人様っ。ゆっくり休んでね〜♪'
 			],
 
-			love2: name => name ? `おかえりなさい♡♡♡${name}っっ♡♡♡♡♡` : 'おかえりなさい♡♡♡ご主人様っっ♡♡♡♡♡',
+			love2: name => name ? `おかえりなさい♡♡♡${name}っっ♡♡♡♡♡ゆっくり休んでね！` : 'おかえりなさい♡♡♡ご主人様っっ♡♡♡♡♡ゆっくり休んでね！',
 
 			normal: name => name ? `おかえり、${name}！` : 'おかえり！',
 		},
 
 		itterassyai: {
-			love: name => name ? `いってらっしゃい、${name}♪` : 'いってらっしゃい♪',
+			love: name => name ? `いってらっしゃい、${name}♪気をつけてね〜。` : 'いってらっしゃい♪気をつけてね〜。',
 
 			normal: name => name ? `いってらっしゃい、${name}！` : 'いってらっしゃい！',
 		},
 
-		tooLong: '長すぎる気がするよ...',
+		tooLong: '長すぎるよ〜...',
 
-		invalidName: '発音が難しい気がするよ',
+		invalidName: 'うーん、ちょっと発音が難しいなぁ…',
 
-		requireMoreLove: 'もっと仲良くなったら考えてあげてもいいよ？',
+		requireMoreLove: 'もっと仲良くなったら考えてあげる〜',
 
 		nadenade: {
 			normal: 'ひゃっ…！ びっくりした～',
@@ -119,14 +127,14 @@ export default {
 		},
 
 		batou: {
-			love: 'お、おたんこなす！',
+			love: 'えっと…、お、おバカっ！！！',
 
 			normal: '(じとー…)',
 
 			hate: '…頭大丈夫？'
 		},
 
-		itai: name => name ? `${name}、大丈夫…？ いたいのいたいの飛んでけっ！` : '大丈夫…？ いたいのいたいの飛んでけっ！',
+		itai: name => name ? `${name}、大丈夫…？ いたいのいたいの飛んでけ～！` : '大丈夫…？ いたいのいたいの飛んでけ～！',
 
 		ote: {
 			normal: 'くぅん... 私わんちゃんじゃないよ...？',
@@ -140,7 +148,7 @@ export default {
 	},
 
 	keyword: {
-		learned: (word, reading) => `(${word}..... ${reading}..... 覚えだっ！)`,
+		learned: (word, reading) => `(${word}..... ${reading}..... 覚えたっ！)`,
 
 		remembered: (word) => `${word}`
 	},
@@ -165,7 +173,7 @@ export default {
 		/**
 		 * リバーシへの誘いを断るとき
 		 */
-		decline: 'ごめんなさい、今リバーシはするなと言われてるの...',
+		decline: 'ごめんなさい、マスターに今リバーシはしちゃダメって言われてるの...',
 
 		/**
 		 * 対局開始
@@ -195,7 +203,7 @@ export default {
 		/**
 		 * 接待で負けてあげたとき
 		 */
-		iLoseButSettai: name => `(${name}に接待で負けてあげちゃった...♪)`,
+		iLoseButSettai: name => `(${name}に接待で負けてあげたよ...♪)`,
 
 		/**
 		 * 引き分けたとき
@@ -205,7 +213,7 @@ export default {
 		/**
 		 * 接待で引き分けたとき
 		 */
-		drawnSettai: name => `(${name}に接待で引き分けた...)`,
+		drawnSettai: name => `(${name}に接待で引き分けちゃった...)`,
 
 		/**
 		 * 相手が投了したとき
@@ -230,7 +238,7 @@ export default {
 		/**
 		 * タイムライン上で誘われたとき
 		 */
-		plzDm: 'メッセージでやろっ！',
+		plzDm: 'メッセージでやろうねっ！',
 
 		/**
 		 * ゲーム開始
@@ -303,7 +311,7 @@ export default {
 	 * 占い
 	 */
 	fortune: {
-		cw: name => name ? `私が今日の${name}の運勢を占ったよ...` : '私が今日のあなたの運勢を占ったよ...',
+		cw: name => name ? `私が今日の${name}の運勢を占ったよ...` : '私が今日の君の運勢を占ったよ...',
 	},
 
 	/**
@@ -327,7 +335,7 @@ export default {
 	},
 
 	server: {
-		cpu: 'サーバーの負荷が高いよ。大丈夫かな...？\nマスターは低スペックだから仕方ないって言ってたけど...。'
+		cpu: 'サーバーの負荷が高いよ。大丈夫かな...？ @lei202'
 	},
 
 	maze: {
