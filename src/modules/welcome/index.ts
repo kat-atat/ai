@@ -19,6 +19,7 @@ export default class extends Module {
 			setTimeout(() => {
 				this.ai.api('notes/create', {
 					visibility: 'public',
+					text: '新規さんを見つけました',
 					renoteId: note.id
 				});
 			}, 3000);
