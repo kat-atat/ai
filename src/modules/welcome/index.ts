@@ -19,7 +19,7 @@ export default class extends Module {
 			setTimeout(() => {
 				this.ai.api('notes/create', {
 					visibility: 'public',
-					text: '新規さんを見つけました',
+					text: '新規さんいらっしゃい！',
 					renoteId: note.id
 				});
 			}, 3000);
@@ -28,7 +28,7 @@ export default class extends Module {
 				this.ai.api('notes/create', {
 					visibility: 'public',
 					replyId: note.id,
-					text: 'ようこそ！ \n このインスタンスについて了解してほしいことがあるから、 \n ?[このページ](https://github.com/Misskey-lei/Policy/blob/master/kiyaku_kari.md)を見てくれると嬉しいなっ☆'
+					text: 'Misskey-leiへようこそ！ \n このインスタンスについて了解してほしいことがあるから、 \n ?[このページ](https://github.com/Misskey-lei/Policy/blob/master/kiyaku_kari.md)を見てくれると嬉しいなっ☆'
 				});
 			}, 4000);
 
