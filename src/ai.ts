@@ -5,7 +5,7 @@ import autobind from 'autobind-decorator';
 import * as loki from 'lokijs';
 import * as request from 'request-promise-native';
 import * as chalk from 'chalk';
-import * as uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 const delay = require('timeout-as-promise');
 
 import config from './config';
