@@ -32,7 +32,7 @@ export default class extends Module {
 		this.tokenizer = new MeCab();
 		this.tokenizer.command = config.mecab;
 
-		setInterval(this.learn, 1000 * 60 * 15);
+		setInterval(this.learn, 1000 * 60 * 60);
 
 		return {};
 	}
