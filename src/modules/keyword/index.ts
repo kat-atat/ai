@@ -39,7 +39,7 @@ export default class extends Module {
 
 	@autobind
 	private async learn() {
-		const tl = await this.ai.api('notes/local-timeline', {
+		const tl = await this.ai.api('notes/global-timeline', {
 			limit: 30
 		});
 
