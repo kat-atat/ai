@@ -26,6 +26,7 @@ export default class extends Module {
 	public readonly name = 'kazutori';
 
 	private games: loki.Collection<Game>;
+	private lock = 0;
 
 	@autobind
 	public install() {
@@ -43,6 +44,11 @@ export default class extends Module {
 	@autobind
 	private async mentionHook(msg: Message) {
 		if (!msg.includes(['数取り'])) return false;
+
+		if (this.lock && (Date.now() - this.lock < 60 * 1000)) {
+			return false
+		}
+		this.lock = Date.now();
 
 		const games = this.games.find({});
 
@@ -72,6 +78,8 @@ export default class extends Module {
 			startedAt: Date.now(),
 			postId: post.id
 		});
+
+		this.lock = 0;
 
 		this.subscribeReply(null, false, post.id);
 

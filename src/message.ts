@@ -72,7 +72,9 @@ export default class Message {
 			});
 		} else {
 			return await this.ai.post({
-				visibility: 'public',
+				visibility: this.messageOrNote.visibility,
+				localOnly: this.messageOrNote.localOnly,
+				copyOnce: this.messageOrNote.copyOnce,
 				replyId: this.messageOrNote.id,
 				text: text,
 				cw: cw,
