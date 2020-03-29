@@ -79,7 +79,6 @@ promiseRetry(retry => {
 		new VersionModule(),
 		new MazeModule(),
 		new ChartModule(),
-		new StartModule(),
 	]);
 }).catch(e => {
 	log(chalk.red('Failed to fetch the account'));
