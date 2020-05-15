@@ -3,7 +3,8 @@
 import * as fs from 'fs';
 import autobind from 'autobind-decorator';
 import * as loki from 'lokijs';
-import * as request from 'request-promise-native';
+import fetch from 'node-fetch';
+import * as FormData from 'form-data';
 import * as chalk from 'chalk';
 import { v4 as uuid } from 'uuid';
 const delay = require('timeout-as-promise');
@@ -292,19 +293,26 @@ export default class 藍 {
 	 * ファイルをドライブにアップロードします
 	 */
 	@autobind
-	public async upload(file: Buffer | fs.ReadStream, meta: any) {
-		const res = await request.post({
-			url: `${config.apiUrl}/drive/files/create`,
-			formData: {
-				i: config.i,
-				file: {
-					value: file,
-					options: meta
-				}
-			},
-			json: true
+	public async upload(file: Buffer | fs.ReadStream, meta: any): Promise<any> {
+		// Buffer && filenameなし だと動かない
+		const _meta = Object.assign({}, meta);
+		if (!_meta.filename?.length) _meta.filename = 'file';
+
+		const formData = new FormData();
+		formData.append('i', config.i);
+		formData.append('file', file, _meta);
+
+		return fetch(`${config.apiUrl}/drive/files/create`, {
+			method: 'post',
+			body: formData,
+			timeout: 30 * 1000,
+		}).then(res => {
+			if (!res.ok) {
+				throw `${res.status} ${res.statusText}`;
+			} else {
+				return res.status === 204 ? {} : res.json();
+			}
 		});
-		return res;
 	}
 
 	/**
@@ -330,14 +338,22 @@ export default class 藍 {
 	 * APIを呼び出します
 	 */
 	@autobind
-	public api(endpoint: string, param?: any) {
-		return request.post({
-			url: `${config.apiUrl}/${endpoint}`,
-			forever: true,
-			timeout: 30 * 1000,
-			json: Object.assign({
+	public api(endpoint: string, param?: any): Promise<any> {
+		return fetch(`${config.apiUrl}/${endpoint}`, {
+			method: 'post',
+			body: JSON.stringify(Object.assign({
 				i: config.i
-			}, param)
+			}, param)),
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			timeout: 30 * 1000,
+		}).then(res => {
+			if (!res.ok) {
+				throw `${res.status} ${res.statusText}`;
+			} else {
+				return res.status === 204 ? {} : res.json();
+			}
 		});
 	};
 

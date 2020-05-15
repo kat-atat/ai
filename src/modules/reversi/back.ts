@@ -6,7 +6,7 @@
  * 切断されてしまうので、別々のプロセスで行うようにします
  */
 
-import * as request from 'request-promise-native';
+import fetch from 'node-fetch';
 import Reversi, { Color } from 'misskey-reversi';
 import config from '../../config';
 import serifs from '../../serifs';
@@ -506,11 +506,19 @@ class Session {
 			}
 
 			try {
-				const res = await request.post({
-					url: `${config.host}/api/notes/create`,
-					forever: true,
+				const res = await fetch(`${config.host}/api/notes/create`, {
+					method: 'post',
+					body: JSON.stringify(body),
+					headers: {
+						'Content-Type': 'application/json'
+					},
 					timeout: 30 * 1000,
-					json: body
+				}).then(res => {
+					if (!res.ok) {
+						throw `${res.status} ${res.statusText}`;
+					} else {
+						return res.json();
+					}
 				});
 
 				return res.createdNote;
