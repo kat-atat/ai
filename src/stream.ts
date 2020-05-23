@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 import * as WebSocket from 'ws';
 const ReconnectingWebsocket = require('reconnecting-websocket');
 import config from './config';
+import { v4 as uuid } from 'uuid';
 
 /**
  * Misskey stream connection
@@ -142,6 +143,22 @@ export default class Stream extends EventEmitter {
 		}
 
 		this.stream.send(JSON.stringify(data));
+	}
+
+	@autobind
+	public api(endpoint: string, data: any = {}, id?: string) {
+		const d = {
+			type: 'api',
+			body: {
+				id: id || uuid(),
+				endpoint,
+				data
+			}
+		};
+
+		// とりあえずバッファリングしない
+
+		this.stream.send(JSON.stringify(d));
 	}
 
 	/**

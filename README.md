@@ -43,7 +43,7 @@ Misskey用の日本語Botです。
 	"mecab": "MeCab のインストールパス (ソースからインストールした場合、大体は /usr/local/bin/mecab)"
 }
 ```
-`npm install` して `npm run build` して `npm start` すれば起動できます
+`yarn install` して `yarn build` して `yarn start` すれば起動できます
 
 時々MeCabの場所が`/usr/bin/mecab`の場合ある。(自分の場合これ)
 

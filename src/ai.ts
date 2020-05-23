@@ -117,6 +117,11 @@ export default class 藍 {
 		// Init stream
 		this.connection = new Stream();
 
+		setInterval(() => {
+			this.log('Test API request to stream');
+			this.connection.api('meta')
+		}, 10 * 60 * 1000);
+
 		//#region Main stream
 		const mainStream = this.connection.useSharedConnection('main');
 
