@@ -316,12 +316,12 @@ class Session {
 		// 探索
 		let scores;
 		try {
-			// 実績的に無理そうだったら最大1手
+			// 実績的に無理そうだったら最大3手
 			if (cans.length > this.dekiru) {
 				console.log(`Tenuki: ${cans.length} >= ${this.dekiru}`);
-				if (maxDepth > 1) {
+				if (maxDepth > 3) {
 					console.log(`Tenuki`);
-					maxDepth = 1;
+					maxDepth = 3;
 				}
 			}
 
@@ -336,11 +336,11 @@ class Session {
 			this.dekiru = cans.length;
 
 			// 最大1手でリトライ
-			if (maxDepth > 1) {
-				maxDepth = 1;
+			if (maxDepth > 3) {
+				maxDepth = 3;
 				const diveStart = new Date().getTime();
 				console.log(`retry dive for ${cans.length}cans, maxDepth=${maxDepth}`)
-				scores = cans.map(p => this.goDive(p, maxDepth, diveStart, 60 * 1000));
+				scores = cans.map(p => this.goDive(p, maxDepth, diveStart, 30 * 1000));
 			} else {
 				throw new Error('Muri');
 			}
