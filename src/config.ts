@@ -4,10 +4,12 @@ type Config = {
 	wsUrl: string;
 	apiUrl: string;
 	keywordEnabled: boolean;
+	keywordInterval?: number;
 	reversiEnabled: boolean;
 	chartEnabled: boolean;
 	serverMonitoring: boolean;
 	mecab?: string;
+	mecabDic?: string;
 };
 
 const config = require('../config.json');

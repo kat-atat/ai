@@ -3,6 +3,7 @@ import * as loki from 'lokijs';
 import Module from '../../module';
 import config from '../../config';
 import serifs from '../../serifs';
+import { promisify } from 'util';
 const MeCab = require('mecab-async');
 
 function kanaToHira(str: string) {
@@ -30,9 +31,9 @@ export default class extends Module {
 		});
 
 		this.tokenizer = new MeCab();
-		this.tokenizer.command = config.mecab;
+		this.tokenizer.command = config.mecabDic ? `${config.mecab} -d ${config.mecabDic}` : config.mecab;
 
-		setInterval(this.learn, 1000 * 60 * 60);
+		setInterval(this.learn, 1000 * 60 * (config.keywordInterval || 60));
 
 		return {};
 	}
@@ -50,13 +51,13 @@ export default class extends Module {
 
 		let keywords: string[][] = [];
 
-		await Promise.all(interestedNotes.map(note => new Promise((res, rej) => {
-			this.tokenizer.parse(note.text, (err, tokens) => {
-				const keywordsInThisNote = tokens.filter(token => token[2] == '固有名詞' && token[8] != null);
-				keywords = keywords.concat(keywordsInThisNote);
-				res();
-			});
-		})));
+		for (const note of interestedNotes) {
+			const tokens = await promisify(this.tokenizer.parse).bind(this.tokenizer)(note.text);
+			const keywordsInThisNote = tokens.filter(token => token[2] == '固有名詞' && token[8] != null);
+			keywords = keywords.concat(keywordsInThisNote);
+		}
+
+		if (keywords.length === 0) return;
 
 		const rnd = Math.floor((1 - Math.sqrt(Math.random())) * keywords.length);
 		const keyword = keywords.sort((a, b) => a[0].length < b[0].length ? 1 : -1)[rnd];
