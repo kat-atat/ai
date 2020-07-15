@@ -28,7 +28,7 @@ export default class extends Module {
 				this.ai.api('notes/create', {
 					visibility: 'public',
 					replyId: note.id,
-					text: 'Misskey-leiへようこそ！ \n このインスタンスについて了解してほしいことがあるから、 \n ?[このページ](https://github.com/Misskey-lei/Policy/blob/master/kiyaku_kari.md)を見てくれると嬉しいなっ☆'
+					text: 'れいすきーへようこそ！ \n このインスタンスについて了解してほしいことがあるから、 \n ?[このページ](https://github.com/Misskey-lei/Policy/blob/master/kiyaku_kari.md)を見てくれると嬉しいなっ☆'
 				});
 			}, 4000);
 
