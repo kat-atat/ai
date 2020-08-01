@@ -43,6 +43,9 @@ export default class extends Module {
 
 		const pre = time ==  300 * 1000 && /(?:カレーメシ|ぶっこみ飯)/.test(msg.text) ? 'またカップめし？私にも欲しいな！' : '';
 
+		const pre = time ==  180 * 1000 && /(?:ごつ盛り塩焼きそば|ごつ盛り塩)/.test(msg.text) ? 'ごつ盛り塩焼きそば！？私にも頂戴！！' : '';
+
+
 		msg.reply(pre + serifs.timer.set);
 
 		const str = `${hours ? hoursQuery[0] : ''}${minutes ? minutesQuery[0] : ''}${seconds ? secondsQuery[0] : ''}`;
