@@ -41,6 +41,8 @@ export default class extends Module {
 			return true;
 		}
 
+		const pre = time ==  180 * 1000 && /(?:ごつ盛り塩焼きそば|ごつ盛り塩)/.test(msg.text) ? 'ごつ盛り塩焼きそば！？私にも頂戴！！' : '';
+
 		msg.reply(pre + serifs.timer.set);
 
 		const str = `${hours ? hoursQuery[0] : ''}${minutes ? minutesQuery[0] : ''}${seconds ? secondsQuery[0] : ''}`;
@@ -65,8 +67,8 @@ export default class extends Module {
 		if (typeof data.request === 'string') {
 			if (data.request.match(/赤いきつね/)) text += '\n七味入れるともっといいよ～';
 			if (data.request.match(/蒙古タンメン/)) text += '\n辛味オイル入れすぎないでね～';
-			if (data.request.match(/カレーメシ/)) text += '\nかき混ぜると！おいしいよ！！！';
-			if (data.request.match(/ごつ盛り塩焼きそば/)) text += '\nごつ盛り塩焼きそば！？私にも頂戴！！';
+			if (data.request.match(/カレーメシ/)) text += '\nいっぱい底からかき混ぜると！おいしいよ！！！';
+			if (data.request.match(/ごつ盛り塩焼きそば/)) text += '\nよ～く混ぜて食べようね～';
 		}
 
 		if (data.isDm) {
