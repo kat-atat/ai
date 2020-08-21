@@ -53,7 +53,8 @@ export default class extends Module {
 			isDm: msg.isDm,
 			msgId: msg.id,
 			userId: msg.friend.userId,
-			time: str
+			time: str,
+			request: msg.text,
 		});
 
 		return true;
@@ -62,7 +63,14 @@ export default class extends Module {
 	@autobind
 	private timeoutCallback(data) {
 		const friend = this.ai.lookupFriend(data.userId);
-		const text = serifs.timer.notify(data.time, friend.name);
+		let text = serifs.timer.notify(data.time, friend.name);
+
+		if (typeof data.request === 'string') {
+			if (data.request.match(/赤いきつね/)) text += '\n七味入れるの忘れないでくださいね';
+			if (data.request.match(/蒙古タンメン/)) text += '\n辛味オイル全部入れるとお腹壊しちゃいますよ';
+			if (data.request.match(/カレーメシ/)) text += '\n数分待つかいっぱいかき混ぜるとおいしいですよ';
+		}
+
 		if (data.isDm) {
 			this.ai.sendMessage(friend.userId, {
 				text: text
