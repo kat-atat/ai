@@ -35,7 +35,7 @@ export default class extends Module {
 	public versionCheck = () => {
 		// バージョンチェック
 		this.getVersion().then(fetched => {
-			console.log(`Version fetched: ${JSON.stringify(fetched)}`);
+			this.log(`Version fetched: ${JSON.stringify(fetched)}`);
 
 			if (this.latest != null && fetched != null) {
 				const serverChanged = this.latest.server !== fetched.server;
@@ -44,7 +44,7 @@ export default class extends Module {
 					let v = '';
 					v += (serverChanged ? '**' : '') + `${this.latest.server} → ${this.mfmVersion(fetched.server)}\n` + (serverChanged ? '**' : '');
 
-					console.log(`Version changed: ${v}`);
+					this.log(`Version changed: ${v}`);
 
 					this.ai.post({ text: `【バージョンが変わったよ！】\n${v}` });
 				} else {
@@ -53,7 +53,7 @@ export default class extends Module {
 			}
 
 			this.latest = fetched;
-		}).catch(e => console.warn(e));
+		}).catch(e => this.log(`warn: ${e}`));
 	}
 
 	@autobind
