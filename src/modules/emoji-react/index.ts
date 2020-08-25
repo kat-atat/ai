@@ -58,6 +58,7 @@ export default class extends Module {
 				case '✌': reaction = '🤞'; break;
 				case '🖐': reaction = '🖖'; break;
 				case '✋': reaction = '🖖'; break;
+				case '🤜': reaction = '🤛'; break;
 			}
 
 			return react(reaction);
