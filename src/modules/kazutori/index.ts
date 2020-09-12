@@ -57,7 +57,9 @@ export default class extends Module {
 		if (recentGame) {
 			// 現在アクティブなゲームがある場合
 			if (!recentGame.isEnded) {
-				msg.reply(serifs.kazutori.alreadyStarted, null, recentGame.postId);
+				msg.reply(serifs.kazutori.alreadyStarted, {
+					renote: recentGame.postId
+				});
 				return true;
 			}
 
@@ -89,7 +91,7 @@ export default class extends Module {
 			isEnded: false
 		});
 
-		game.votes.push({
+		game!.votes.push({
 			user: this.ai.account,
 			number: Math.floor(Math.random() * 5) + 1 + 95
 		});
@@ -107,8 +109,8 @@ export default class extends Module {
 			isEnded: false
 		});
 
-		const text = msg.extractedText;
-		this.log(`Extracted: '${text}'`);
+		// 処理の流れ上、実際にnullになることは無さそうだけど一応
+		if (game == null) return;
 
 		const match = msg.extractedText.match(/[0-9]+/);
 		if (match == null) return {
@@ -193,7 +195,7 @@ export default class extends Module {
 		}
 
 		let results: string[] = [];
-		let winner: User = null;
+		let winner: User | null = null;
 
 		for (let i = 100; i >= 0; i--) {
 			const users = game.votes
@@ -213,8 +215,11 @@ export default class extends Module {
 			}
 		}
 
+		const winnerFriend = winner ? this.ai.lookupFriend(winner.id) : null;
+		const name = winnerFriend ? winnerFriend.name : null;
+
 		const text = results.join('\n') + '\n\n' + (winner
-			? serifs.kazutori.finishWithWinner(acct(winner))
+			? serifs.kazutori.finishWithWinner(acct(winner), name)
 			: serifs.kazutori.finishWithNoWinner);
 
 		this.ai.post({
