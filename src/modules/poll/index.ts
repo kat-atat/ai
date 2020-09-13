@@ -39,11 +39,11 @@ export default class extends Module {
 		const duration = 1000 * 60 * 30;
 
 		const polls = [ // TODO: Extract serif
-			['いちばん珍しそうなもの', 'みなさんは、どれがいちばん珍しいと思いますか？ ヽ(・∀・)'],
-			['いちばん美味しそうなもの', 'みなさんは、どれがいちばん美味しいと思いますか？ ヽ(・∀・)'],
-			['いちばん重そうなもの', 'みなさんは、どれがいちばん重いと思いますか？ ヽ(・∀・)'],
-			['いちばん欲しいもの', 'みなさんは、どれがいちばん欲しいですか？ ヽ(・∀・)'],
-			['無人島に持っていきたいもの', 'みなさんは、無人島にひとつ持っていけるとしたらどれにしますか？ ヽ(・∀・)'],
+			['いちばん珍しそうなもの', 'みんなは、どれがいちばん珍しいと思う？ ヽ(・∀・)'],
+			['いちばん美味しそうなもの', 'みんなは、どれがいちばん美味しいと思う？ ヽ(・∀・)'],
+			['いちばん重そうなもの', 'みんなは、どれがいちばん重いと思う？ ヽ(・∀・)'],
+			['いちばん欲しいもの', 'みんなは、どれがいちばん欲しい？ ヽ(・∀・)'],
+			['無人島に持っていきたいもの', 'みんなは、無人島にひとつ持っていけるとしたらどれにする？ ヽ(・∀・)'],
 		];
 
 		const poll = polls[Math.floor(Math.random() * polls.length)];
@@ -115,13 +115,13 @@ export default class extends Module {
 
 		if (mostVotedChoice.votes === 0) {
 			this.ai.post({ // TODO: Extract serif
-				text: '投票はありませんでした',
+				text: '投票はなかったよ〜…',
 				renoteId: noteId,
 			});
 		} else {
 			this.ai.post({ // TODO: Extract serif
-				cw: `${title}アンケートの結果発表です！`,
-				text: `結果は「${mostVotedChoice.text}」でした！`,
+				cw: `${title}アンケートの結果発表〜！`,
+				text: `結果は「${mostVotedChoice.text}」だったよ！`,
 				renoteId: noteId,
 			});
 		}
