@@ -23,14 +23,6 @@ export default class extends Module {
 					renoteId: note.id
 				});
 			}, 3000);
-			
-			setTimeout(() => {
-				this.ai.api('notes/create', {
-					visibility: 'public',
-					replyId: note.id,
-					text: 'れいすきーへようこそ！ \n このインスタンスについて了解してほしいことがあるから、 \n ?[このページ](https://github.com/Misskey-lei/Policy/blob/master/kiyaku_kari.md)を見てくれると嬉しいなっ☆'
-				});
-			}, 4000);
 
 			setTimeout(() => {
 				this.ai.api('notes/reactions/create', {
