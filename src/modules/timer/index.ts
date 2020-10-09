@@ -70,6 +70,7 @@ export default class extends Module {
 			if (data.request.match(/赤いきつね/)) text += '\n七味入れるともっといいよ～';
 			if (data.request.match(/蒙古タンメン/)) text += '\n辛味オイル入れすぎないでね～';
 			if (data.request.match(/カレーメシ/)) text += '\nいっぱい底からかき混ぜると！おいしいよ！！！';
+			if (data.request.match(/UFO/)) text += '\nしっかり湯切りして食べよっ！！！';
 			if (data.request.match(/ごつ盛り塩焼きそば/)) text += '\nよ～く混ぜて食べようね～';
 		}
 
