@@ -301,7 +301,7 @@ export default {
 
 		finish: 'ゲームの結果発表～！！',
 
-		finishWithWinner: (user, name) => name ? `今回は${user}(${name})さんの勝ち！またやろっ♪` : `今回は${user}さんの勝ち！またやろっ♪`,
+		finishWithWinner: (user, name) => name ? `今回は${user}さん(${name})の勝ち！またやろっ♪` : `今回は${user}さんの勝ち！またやろっ♪`,
 
 		finishWithNoWinner: '今回は勝者はいなかったよ... またやろっ♪',
 
@@ -420,6 +420,7 @@ export default {
 			'ヾ(๑╹◡╹)ﾉ"',
 			'私の"インスタンス"を周囲に展開して分身するのが特技！\n人数分のエネルギー消費があるから、4人くらいが限界なんだけど',
 			'うとうと...',
+			'ふわー、メモリが五臓六腑に染み渡る…',
 		],
 		want: item => `${item}、欲しいなぁ...`,
 		see: item => `お散歩していたら、道に${item}が落ちているのを見たよ！`,

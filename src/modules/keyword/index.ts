@@ -4,7 +4,7 @@ import Module from '../../module';
 import config from '../../config';
 import serifs from '../../serifs';
 import { promisify } from 'util';
-const MeCab = require('mecab-async');
+import { mecab } from './mecab';
 
 function kanaToHira(str: string) {
 	return str.replace(/[\u30a1-\u30f6]/g, match => {
@@ -16,7 +16,6 @@ function kanaToHira(str: string) {
 export default class extends Module {
 	public readonly name = 'keyword';
 
-	private tokenizer: any;
 	private learnedKeywords: loki.Collection<{
 		keyword: string;
 		learnedAt: number;
@@ -29,9 +28,6 @@ export default class extends Module {
 		this.learnedKeywords = this.ai.getCollection('_keyword_learnedKeywords', {
 			indices: ['userId']
 		});
-
-		this.tokenizer = new MeCab();
-		this.tokenizer.command = config.mecabDic ? `${config.mecab} -d ${config.mecabDic}` : config.mecab;
 
 		setInterval(this.learn, 1000 * 60 * (config.keywordInterval || 60));
 
@@ -52,7 +48,7 @@ export default class extends Module {
 		let keywords: string[][] = [];
 
 		for (const note of interestedNotes) {
-			const tokens = await promisify(this.tokenizer.parse).bind(this.tokenizer)(note.text);
+			const tokens = await mecab(note.text, config.mecab, config.mecabDic);
 			const keywordsInThisNote = tokens.filter(token => token[2] == '固有名詞' && token[8] != null);
 			keywords = keywords.concat(keywordsInThisNote);
 		}
