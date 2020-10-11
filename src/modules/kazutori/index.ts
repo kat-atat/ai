@@ -190,8 +190,8 @@ export default class extends Module {
 
 		function acct(user: User): string {
 			return user.host
-				? `@${user.username}@${user.host}`
-				: `@${user.username}`;
+				? `:@${user.username}@${user.host}:`
+				: `:@${user.username}:`;
 		}
 
 		let results: string[] = [];
