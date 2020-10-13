@@ -13,7 +13,7 @@ export default class extends Module {
 
 	@autobind
 	public install() {
-		this.htl = this.ai.connection.useSharedConnection('globalTimeline');
+		this.htl = this.ai.connection.useSharedConnection('homeTimeline');
 		this.htl.on('note', this.onNote);
 
 		return {};
@@ -54,10 +54,10 @@ export default class extends Module {
 			let reaction = emojis[0];
 
 			switch (reaction) {
-				case '✊': reaction = '🤟'; break;
-				case '✌': reaction = '🤞'; break;
-				case '🖐': reaction = '🖖'; break;
-				case '✋': reaction = '🖖'; break;
+				case '✊': reaction = '✋'; break;
+				case '✌': reaction = '✊'; break;
+				case '🖐': reaction = '✌️'; break;
+				case '✋': reaction = '✌️'; break;
 				case '🤜': reaction = '🤛'; break;
 			}
 
