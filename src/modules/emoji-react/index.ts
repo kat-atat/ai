@@ -13,7 +13,7 @@ export default class extends Module {
 
 	@autobind
 	public install() {
-		this.htl = this.ai.connection.useSharedConnection('socialTimeline');
+		this.htl = this.ai.connection.useSharedConnection('globalTimeline');
 		this.htl.on('note', this.onNote);
 
 		return {};
