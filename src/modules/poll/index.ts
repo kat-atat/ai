@@ -1,11 +1,10 @@
 import autobind from 'autobind-decorator';
-import Message from '../../message';
-import Module from '../../module';
-import serifs from '../../serifs';
-import { genItem } from '../../vocabulary';
-import config from '../../config';
+import Message from '@/message';
+import Module from '@/module';
+import { genItem } from '@/vocabulary';
+import config from '@/config';
+import { Note } from '@/misskey/note';
 import * as loki from 'lokijs';
-import { Note } from '../../misskey/note';
 
 export default class extends Module {
 	public readonly name = 'poll';
@@ -73,6 +72,7 @@ export default class extends Module {
 			['絵文字になってほしいもの', '絵文字になってほしいものはどれ？'],
 			['Misskey本部にありそうなもの', 'みんなは、Misskey本部にありそうなものはどれだと思う？'],
 			['燃えるゴミ', 'みんなは、どれが燃えるゴミだと思う？'],
+			['好きなおにぎりの具', 'みんなの好きなおにぎりの具はなぁに？'],
 			['そして輝くウルトラ', 'そして輝くウルトラ'],
 		];
 
@@ -83,7 +83,7 @@ export default class extends Module {
 
 			const count = this.learnedKeywords.count();
 			const offset = Math.floor(rng() * count);
-	
+
 			const x = this.learnedKeywords.chain().find().offset(offset).limit(1).data();
 			const keyword = x[0]?.keyword || null;
 			return keyword;
@@ -147,21 +147,29 @@ export default class extends Module {
 				continue;
 			}
 
-			// TODO: 同数一位のハンドリング
 			if (choice.votes > mostVotedChoice.votes) {
 				mostVotedChoice = choice;
 			}
 		}
+
+		const mostVotedChoices = choices.filter(choice => choice.votes === mostVotedChoice.votes);
 
 		if (mostVotedChoice.votes === 0) {
 			this.ai.post({ // TODO: Extract serif
 				text: '投票はなかったよ〜…',
 				renoteId: noteId,
 			});
-		} else {
+		} else if (mostVotedChoices.length === 1) {
 			this.ai.post({ // TODO: Extract serif
-				cw: `${title}アンケートの結果発表～！`,
-				text: `結果は${mostVotedChoice.votes}票を獲得した「${mostVotedChoice.text}」だったよ！`,
+				cw: `${title}アンケートの結果発表！`,
+				text: `結果は${mostVotedChoice.votes}票の「${mostVotedChoice.text}」だったよ！`,
+				renoteId: noteId,
+			});
+		} else {
+			const choices = mostVotedChoices.map(choice => `「${choice.text}」`).join('と');
+			this.ai.post({ // TODO: Extract serif
+				cw: `${title}アンケートの結果発表！`,
+				text: `結果は${mostVotedChoice.votes}票の${choices}だったよ！`,
 				renoteId: noteId,
 			});
 		}

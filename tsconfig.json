@@ -13,7 +13,11 @@
 		"removeComments": false,
 		"noLib": false,
 		"outDir": "built",
-		"rootDir": "src"
+		"rootDir": "src",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		},
 	},
 	"compileOnSave": false,
 	"include": [

@@ -95,6 +95,8 @@ export const itemPrefixes = [
 	'シュレディンガーの',
 	'分散型',
 	'卵かけ',
+	'次世代',
+	'帯電',
 ];
 
 export const items = [
@@ -246,6 +248,15 @@ export const items = [
 	'空気',
 	'RTX 3090',
 	'シャーペンの芯',
+	'ロゼッタストーン',
+	'CapsLockキー',
+	'虚無',
+	'UFO',
+	'NumLockキー',
+	'放射性廃棄物',
+	'火星',
+	'ウラン',
+	'遠心分離機',
 ];
 
 export const and = [
@@ -269,12 +280,17 @@ export function genItem(seedOrRng?: (() => number) | string | number, getKeyword
 		: Math.random;
 
 	let item = '';
-	if (Math.floor(rng() * 5) !== 0) item += itemPrefixes[Math.floor(rng() * itemPrefixes.length)];
-	item += ((getKeyword ? getKeyword(rng) : null) || items[Math.floor(rng() * items.length)]);
-	if (Math.floor(rng() * 3) === 0) {
-		item += and[Math.floor(rng() * and.length)];
+	if (getKeyword) {
 		if (Math.floor(rng() * 5) !== 0) item += itemPrefixes[Math.floor(rng() * itemPrefixes.length)];
 		item += ((getKeyword ? getKeyword(rng) : null) || items[Math.floor(rng() * items.length)]);
+	} else {
+		if (Math.floor(rng() * 5) !== 0) item += itemPrefixes[Math.floor(rng() * itemPrefixes.length)];
+		item += (items[Math.floor(rng() * items.length)]);
+		if (Math.floor(rng() * 3) === 0) {
+			item += and[Math.floor(rng() * and.length)];
+			if (Math.floor(rng() * 5) !== 0) item += itemPrefixes[Math.floor(rng() * itemPrefixes.length)];
+			item += (items[Math.floor(rng() * items.length)]);
+		}
 	}
 	return item;
 }

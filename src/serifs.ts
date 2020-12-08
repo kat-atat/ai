@@ -336,6 +336,31 @@ export default {
 	},
 
 	/**
+	 * リマインダー
+	 */
+	reminder: {
+		invalid: 'うーん...？',
+
+		reminds: 'やること一覧だよっ！',
+
+		notify: (name) => name ? `${name}、これやった？` : `これやった覚えある？`,
+
+		notifyWithThing: (thing, name) => name ? `${name}、「${thing}」やった？` : `「${thing}」やった覚えある？`,
+
+		done: (name) => name ? [
+			`よく出来たね、${name}♪`,
+			`${name}、さすがだよっ！`,
+			`${name}、えらい...！`,
+		] : [
+			`よく出来たね♪`,
+			`さすがっ！`,
+			`えらい...！`,
+		],
+
+		cancel: `オッケー`,
+	},
+
+	/**
 	 * バレンタイン
 	 */
 	valentine: {
