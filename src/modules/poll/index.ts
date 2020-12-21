@@ -165,6 +165,12 @@ export default class extends Module {
 				text: `結果は${mostVotedChoice.votes}票の「${mostVotedChoice.text}」だったよ！`,
 				renoteId: noteId,
 			});
+		} else if (mostVotedChoices.length === 1) {
+			this.ai.post({ // TODO: Extract serif
+				cw: `${title}アンケートの結果発表です！`,
+				text: `結果は${mostVotedChoice.votes}票の「${mostVotedChoice.text}」でした！`,
+				renoteId: noteId,
+			});
 		} else {
 			const choices = mostVotedChoices.map(choice => `「${choice.text}」`).join('と');
 			this.ai.post({ // TODO: Extract serif
