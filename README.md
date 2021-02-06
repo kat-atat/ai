@@ -37,6 +37,7 @@ Misskey用の日本語Botです。
 	"host": "https:// + あなたのインスタンスのURL (末尾の / は除く)",
 	"i": "衣亜として動かしたいアカウントのアクセストークン",
 	"master": "管理者のユーザー名(オプション)",
+	"notingEnabled": "ランダムにノートを投稿する機能を無効にする場合は false を入れる",
 	"keywordEnabled": "キーワードを覚える機能 (MeCab が必要) を有効にする場合は true を入れる (無効にする場合は false)",
 	"keywordInterval": "キーワードを覚える間隔 (分, デフォルト60分)",
 	"chartEnabled": "チャート機能を無効化する場合は false を入れてください",

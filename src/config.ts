@@ -7,6 +7,7 @@ type Config = {
 	keywordEnabled: boolean;
 	keywordInterval?: number;
 	reversiEnabled: boolean;
+	notingEnabled: boolean;
 	chartEnabled: boolean;
 	serverMonitoring: boolean;
 	mecab?: string;
