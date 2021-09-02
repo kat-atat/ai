@@ -40,7 +40,10 @@ export default class extends Module {
 	private async learn() {
 		const tl = await this.ai.api('notes/global-timeline', {
 			limit: 30
-		});
+		}).catch(()=> this.ai.api('notes/local-timeline', {
+			limit: 30
+		}).catch(()=> null));
+		if (tl == null) return;
 
 		const interestedNotes = tl.filter(note =>
 			note.userId !== this.ai.account.id &&
