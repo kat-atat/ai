@@ -14,7 +14,7 @@ type Config = {
 	mecabDic?: string;
 };
 
-const config = require('../config.json');
+const config = require('../files/config.json');
 
 config.wsUrl = config.host.replace('http', 'ws');
 config.apiUrl = config.host + '/api';

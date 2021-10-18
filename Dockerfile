@@ -54,6 +54,8 @@ COPY --from=mecab /usr/local/bin/mecab /usr/local/bin/mecab
 
 COPY --from=mecab /usr/local/lib/mecab/dic/ipadic /usr/local/lib/mecab/dic/ipadic
 
-COPY --from=ai /node_modules /built /package.json /
+COPY --from=ai /node_modules /node_modules
+COPY --from=ai /built /built
+COPY --from=ai /package.json /
 
 CMD ["yarn", "start"]
