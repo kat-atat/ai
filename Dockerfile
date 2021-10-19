@@ -1,10 +1,26 @@
-FROM alpine:3.13.6 AS mecab
+FROM node:fermium-alpine3.14 AS ai
+
+COPY ./package.json ./yarn.lock ./tsconfig.json /
+COPY ./src /src
+
+RUN apk add --no-cache \
+  alpine-sdk \
+  cairo-dev \
+  jpeg-dev \
+  pango-dev \
+  pixman-dev \
+  python3 \
+	&& yarn install \
+  && yarn build
+
+
+FROM alpine:3.14 AS mecab
 
 ARG _ARM_ARCH="arm-unknown-linux-gnu"
+ARG _MECAB_SRC="https://github.com/taku910/mecab/archive/master.tar.gz"
 
-RUN apk add --no-cache alpine-sdk 
-
-RUN wget --no-check-certificate https://github.com/taku910/mecab/archive/master.tar.gz \
+RUN apk add --no-cache alpine-sdk \
+    && wget --no-check-certificate ${_MECAB_SRC} \
     && tar xf master.tar.gz \
     && rm master.tar.gz
 
@@ -22,40 +38,25 @@ WORKDIR /mecab-master/mecab-ipadic
 
 RUN ./configure --with-charset=utf8 \
     && make \
-    && make install
+    && make install \
+		&& tar czf /mecab.tar.gz /usr/local/lib/libmecab* \
+		/usr/local/lib/mecab \
+		/usr/local/bin/mecab \
+		/usr/local/etc/mecabrc
 
 
-FROM node:15.11.0-alpine3.10 AS ai
+FROM node:fermium-alpine3.14 AS runner
+
+COPY --from=ai /package.json /
+COPY --from=ai /built /built
+COPY --from=ai /node_modules /node_modules
+COPY --from=mecab /mecab.tar.gz /
 
 RUN apk add --no-cache \
-  alpine-sdk \
   cairo-dev \
   jpeg-dev \
   pango-dev \
-  pixman-dev \
-  python3
-
-COPY ./package.json ./yarn.lock ./tsconfig.json /
-
-COPY ./src /src/
-
-RUN yarn install \
-  && yarn build
-
-
-FROM node:15.11.0-alpine3.10 AS runner
-
-RUN apk add --no-cache \
-  cairo-dev \
-  jpeg-dev \
-  pango-dev
-
-COPY --from=mecab /usr/local/bin/mecab /usr/local/bin/mecab
-
-COPY --from=mecab /usr/local/lib/mecab/dic/ipadic /usr/local/lib/mecab/dic/ipadic
-
-COPY --from=ai /node_modules /node_modules
-COPY --from=ai /built /built
-COPY --from=ai /package.json /
+  && tar xf mecab.tar.gz \
+  && rm mecab.tar.gz
 
 CMD ["yarn", "start"]
