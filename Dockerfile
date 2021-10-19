@@ -42,6 +42,7 @@ RUN ./configure --with-charset=utf8 \
 		&& tar czf /mecab.tar.gz /usr/local/lib/libmecab* \
 		/usr/local/lib/mecab \
 		/usr/local/bin/mecab \
+		/usr/local/bin/mecab-config \
 		/usr/local/etc/mecabrc
 
 
