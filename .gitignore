@@ -4,3 +4,4 @@ node_modules
 memory.json
 data
 font.ttf
+yarn-error.log

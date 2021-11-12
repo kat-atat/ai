@@ -3,8 +3,7 @@
 	"main": "./built/index.js",
 	"scripts": {
 		"start": "node ./built",
-		"build": "tsc",
-		"test": "jest"
+		"build": "tsc"
 	},
 	"dependencies": {
 		"@types/chalk": "2.2.0",
@@ -36,38 +35,7 @@
 		"uuid": "8.3.2",
 		"ws": "8.2.3"
 	},
-	"devDependencies": {
-		"@koa/router": "10.1.1",
-		"@types/jest": "27.0.2",
-		"@types/koa": "2.13.4",
-		"@types/koa__router": "8.0.9",
-		"@types/websocket": "1.0.4",
-		"jest": "27.3.1",
-		"koa": "2.13.4",
-		"koa-json-body": "5.3.0",
-		"ts-jest": "26.5.6",
-		"websocket": "1.0.34"
-	},
 	"_moduleAliases": {
 		"@": "built"
-	},
-	"jest": {
-		"testRegex": "/test/.*",
-		"moduleFileExtensions": [
-			"ts",
-			"js"
-		],
-		"transform": {
-			"^.+\\.ts$": "ts-jest"
-		},
-		"globals": {
-			"ts-jest": {
-				"tsConfig": "test/tsconfig.json"
-			}
-		},
-		"moduleNameMapper": {
-			"^@/(.+)": "<rootDir>/src/$1",
-			"^#/(.+)": "<rootDir>/test/$1"
-		}
 	}
 }
