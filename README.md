@@ -27,6 +27,10 @@ Misskey用の日本語Botです。
 ```
 `yarn install` して `yarn build` して `yarn start` すれば起動できます
 
+Dockerの場合は最初に `memory/memory.json` に空ファイルを作っておく必要がある
+
+Dockerイメージはここにある https://hub.docker.com/r/mei23/ia/
+
 ## フォント
 一部の機能にはフォントが必要です。藍にはフォントは同梱されていないので、ご自身でフォントをインストールディレクトリに`font.ttf`という名前で設置してください。
 
