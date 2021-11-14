@@ -1,0 +1,12 @@
+.git
+.github
+.vscode
+Dockerfile
+built/
+data/
+node_modules/
+config.json
+memory.json
+memory/
+font.ttf
+docker-compose.yml

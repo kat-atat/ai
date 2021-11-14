@@ -2,6 +2,7 @@ config.json
 built
 node_modules
 memory.json
+memory/
 data
 font.ttf
 yarn-error.log
