@@ -32,7 +32,10 @@ type Chart = {
 };
 
 export function renderChart(chart: Chart) {
-	registerFont('./font.ttf', { family: 'CustomFont' });
+	try {
+		registerFont('./font.ttf', { family: 'CustomFont' });
+	} catch {
+	}
 
 	const canvas = createCanvas(width, height);
 	const ctx = canvas.getContext('2d');
