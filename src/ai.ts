@@ -82,7 +82,7 @@ export default class 藍 {
 		this.account = account;
 		this.modules = modules;
 
-		const file = process.env.NODE_ENV === 'test' ? 'test.memory.json' : 'memory.json';
+		const file = fs.existsSync('memory/memory.json') ? 'memory/memory.json' : 'memory.json';
 
 		this.log(`Lodaing the memory from ${file}...`);
 
