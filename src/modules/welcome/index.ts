@@ -1,5 +1,6 @@
 import autobind from 'autobind-decorator';
 import Module from '@/module';
+import config from '@/config';
 
 export default class extends Module {
 	public readonly name = 'welcome';
@@ -19,6 +20,7 @@ export default class extends Module {
 			setTimeout(() => {
 				this.ai.api('notes/create', {
 					visibility: 'public',
+					localOnly: !!config.welcomeLocal,
 					text: '新規さんを見つけました',
 					renoteId: note.id
 				});
