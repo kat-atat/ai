@@ -50,7 +50,10 @@ Misskey用の日本語Botです。
 ```
 `yarn install` して `yarn build` して `yarn start` すれば起動できます
 
-時々MeCabの場所が`/usr/bin/mecab`の場合ある。(自分の場合これ)
+なんか知らんけど、時々MeCabの場所が`/usr/bin/mecab`の場合ある。
+Dockerの場合は最初に `memory/memory.json` に空ファイルを作っておく必要がある
+
+Dockerイメージはここにある https://hub.docker.com/r/mei23/ia/
 
 ## フォント
 一部の機能にはフォントが必要です。いあにはフォントは同梱されていないので、ご自身でフォントをインストールディレクトリに`font.ttf`という名前で設置してください。
