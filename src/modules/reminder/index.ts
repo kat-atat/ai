@@ -146,7 +146,12 @@ export default class extends Module {
 			reply = await this.ai.post({
 				renoteId: remind.thing == null && remind.quoteId ? remind.quoteId : remind.id,
 				text: acct(friend.doc.user) + ' ' + serifs.reminder.notify(friend.name)
-			});
+			}).catch(() => null);
+		}
+
+		if (reply == null) {
+			this.ai.log(`remind failed: ${friend.userId}`);
+			return;
 		}
 
 		this.subscribeReply(remind.id, remind.isDm, remind.isDm ? remind.userId : reply.id, {
