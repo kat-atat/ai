@@ -475,6 +475,7 @@ export default {
 		],
 		want: (item) => `${item}、欲しいなぁ...`,
 		see: (item) => `お散歩していたら、道に${item}が落ちているのを見たよ！`,
+		expire: (item) => `気づいたら、${item}の賞味期限が切れてました…`,
 	},
 };
 
