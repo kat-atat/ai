@@ -2,7 +2,7 @@
 
 export default {
 	core: {
-		setNameOk: name => `わかりました。これからは${name}と呼びますね！`,
+		setNameOk: name => `わかりました。これからは${name}と呼びます！`,
 
 		san: 'さん付けした方がいいですか？',
 
@@ -368,7 +368,7 @@ export default {
 	},
 
 	server: {
-		cpu: 'サーバーの負荷が高そうです。大丈夫でしょうか...？'
+		cpu: 'サーバーの負荷が高そうです。少しおとなしくしてて下さい！'
 	},
 
 	maze: {
