@@ -5,6 +5,7 @@ import config from '@/config';
 import serifs from '@/serifs';
 import { mecab } from './mecab';
 import Message from '@/message';
+import NeologdNormalizer from 'neologd-normalizer';
 
 function kanaToHira(str: string) {
 	return str.replace(/[\u30a1-\u30f6]/g, match => {
@@ -53,7 +54,12 @@ export default class extends Module {
 		let keywords: string[][] = [];
 
 		for (const note of interestedNotes) {
-			const tokens = await mecab(note.text, config.mecab, config.mecabDic);
+			let text = note.text;
+			if (config.mecabNeologd) {
+				text = NeologdNormalizer.normalize(text);
+			}
+
+			const tokens = await mecab(text, config.mecab, config.mecabDic);
 			if (tokens.length < 3) continue;
 			const keywordsInThisNote = tokens.filter(token => token[2] == '固有名詞' && token[8] != null);
 			keywords = keywords.concat(keywordsInThisNote);

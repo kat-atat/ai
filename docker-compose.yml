@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  ai:
+    build: .
+    restart: always
+    environment:
+      FC_LANG: ja
+      TZ: Asia/Tokyo
+    volumes:
+      - ./config.json:/ai/config.json:ro
+      - ./memory:/ai/memory

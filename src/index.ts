@@ -46,6 +46,7 @@ function log(msg: string): void {
 }
 
 log(chalk.bold(`Ai v${pkg._v}`));
+log(new Date().toString());	// For locale debug
 
 promiseRetry(retry => {
 	log(`Account fetching... ${chalk.gray(config.host)}`);
