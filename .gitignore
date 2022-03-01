@@ -1,4 +1,6 @@
+config.json
 built
 node_modules
+memory.json
 data
-files
+font.ttf
