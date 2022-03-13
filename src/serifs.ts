@@ -368,17 +368,17 @@ export default {
 	},
 
 	server: {
-		cpu: 'サーバーの負荷が高そうです。少しおとなしくしてて下さい！'
+		cpu: 'サーバーの負荷が高そうです。おちついてください！'
 	},
 
 	maze: {
-		post: '今日の迷路です！ #AiMaze',
-		foryou: '描きました！'
+		post: '今日の迷路ですよ！ #AiMaze',
+		foryou: '描きましたよ！'
 	},
 
 	chart: {
-		post: 'インスタンスの投稿数です！',
-		foryou: '描きました！'
+		post: 'インスタンスの投稿数ですよ！',
+		foryou: '描きましたよ！'
 	},
 
 	sleepReport: {
