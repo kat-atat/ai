@@ -4,6 +4,8 @@ import serifs from '@/serifs';
 import { genItem } from '@/vocabulary';
 import config from '@/config';
 import * as loki from 'lokijs';
+import Stream from '@/stream';
+import { Note } from '@/misskey/note';
 
 export default class extends Module {
 	public readonly name = 'noting';
@@ -12,6 +14,9 @@ export default class extends Module {
 		keyword: string;
 		learnedAt: number;
 	}>;
+
+	private tl: ReturnType<Stream['useSharedConnection']>;
+	private pendCount = 0;
 
 	@autobind
 	public install() {
@@ -23,13 +28,23 @@ export default class extends Module {
 			});
 		}
 
+		this.tl = this.ai.connection.useSharedConnection('localTimeline');
+		this.tl.on('note', this.onNote);
+	
 		setInterval(() => {
-			if (Math.random() < (1 / 21)) {
+			if (this.pendCount + (Math.random() * 30) > 20) {
+				this.pendCount = 0;
 				this.post();
 			}
-		}, 1000 * 60 * 11);
+		}, 1000 * 60);
 
 		return {};
+	}
+
+	@autobind
+	private async onNote(note: Note) {
+		if (note.reply != null) return;
+		this.pendCount++;
 	}
 
 	@autobind
