@@ -32,7 +32,7 @@ export default class extends Module {
 		this.tl.on('note', this.onNote);
 	
 		setInterval(() => {
-			if (this.pendCount + (Math.random() * 30) > 20) {
+			if (this.pendCount + (Math.random() * 30) > 30) {
 				this.pendCount = 0;
 				this.post();
 			}
@@ -44,6 +44,8 @@ export default class extends Module {
 	@autobind
 	private async onNote(note: Note) {
 		if (note.reply != null) return;
+		if (note.userId === this.ai.account.id) return; // 自分は弾く
+
 		this.pendCount++;
 	}
 
