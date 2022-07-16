@@ -51,38 +51,39 @@ export default class extends Module {
 
 	@autobind
 	private post() {
-		const getKeyword = (rng: () => number) => {
-			if (!this.learnedKeywords) return null;
+		if (Math.random() * 100 > 66) {
+			const getKeyword = (rng: () => number) => {
+				if (!this.learnedKeywords) return null;
 
-			const count = this.learnedKeywords.count();
-			const offset = Math.floor(rng() * count);
-	
-			const x = this.learnedKeywords.chain().find().offset(offset).limit(1).data();
-			const keyword = x[0]?.keyword || null;
-			return keyword;
-		};
+				const count = this.learnedKeywords.count();
+				const offset = Math.floor(rng() * count);
 
+				const x = this.learnedKeywords.chain().find().offset(offset).limit(1).data();
+				const keyword = x[0]?.keyword || null;
+				return keyword;
+			};
 
-		const notes = [
-			...serifs.noting.notes,
-			() => {
-				const item = genItem(undefined, getKeyword);
-				return serifs.noting.want(item);
-			},
-			() => {
-				const item = genItem(undefined, getKeyword);
-				return serifs.noting.see(item);
-			},
-			() => {
-				const item = genItem(undefined, getKeyword);
-				return serifs.noting.expire(item);
-			},
-		];
+			const notes = [
+				() => {
+					const item = genItem(undefined, getKeyword);
+					return serifs.noting.want(item);
+				},
+				() => {
+					const item = genItem(undefined, getKeyword);
+					return serifs.noting.see(item);
+				},
+				() => {
+					const item = genItem(undefined, getKeyword);
+					return serifs.noting.expire(item);
+				},
+			];
 
-		const note = notes[Math.floor(Math.random() * notes.length)];
-
-		this.ai.post({
-			text: typeof note === 'function' ? note() : note
-		});
+			const note = notes[Math.floor(Math.random() * notes.length)];
+			this.ai.post({ text: note() });
+		} else {
+			const notes = serifs.noting.notes;
+			const note = notes[Math.floor(Math.random() * notes.length)];
+			this.ai.post({ text: note });
+		}
 	}
 }
