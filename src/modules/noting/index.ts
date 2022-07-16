@@ -76,6 +76,18 @@ export default class extends Module {
 					const item = genItem(undefined, getKeyword);
 					return serifs.noting.expire(item);
 				},
+				() => {
+					const item = genItem(undefined, getKeyword);
+					return serifs.noting.f1(item);
+				},
+				() => {
+					const item = genItem(undefined, getKeyword);
+					return serifs.noting.f2(item);
+				},
+				() => {
+					const item = genItem(undefined, getKeyword);
+					return serifs.noting.f3(item);
+				},
 			];
 
 			const note = notes[Math.floor(Math.random() * notes.length)];
