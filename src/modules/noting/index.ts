@@ -51,7 +51,7 @@ export default class extends Module {
 
 	@autobind
 	private post() {
-		if (Math.random() * 100 > 66) {
+		if (Math.random() * 100 > 50) {
 			const getKeyword = (rng: () => number) => {
 				if (!this.learnedKeywords) return null;
 
