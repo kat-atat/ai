@@ -24,10 +24,10 @@ export default class extends Module {
 		}
 
 		setInterval(() => {
-			if (Math.random() < (1 / 21)) {
+			if (Math.random() < 0.5) {
 				this.post();
 			}
-		}, 1000 * 60 * 11);
+		}, 1000 * 60 * 1);
 
 		return {};
 	}
